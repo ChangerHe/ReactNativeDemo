@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"f8app_initial.FAQ"},{"v":2,"key":{"_created_at":-1},"name":"_created_at_-1","ns":"f8app_initial.FAQ","background":true},{"v":2,"key":{"_rperm":1},"name":"_rperm_1","ns":"f8app_initial.FAQ","background":true}]}

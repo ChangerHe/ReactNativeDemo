@@ -1,0 +1,16 @@
+{
+  "name": "2017-f8-parse-server",
+  "version": "1.4.0",
+  "description": "Parse API Server for F8 2017",
+  "scripts": {
+    "build": "babel cloud --out-dir cloud-lib --copy-files"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "6.24.1"
+  }
+}

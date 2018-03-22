@@ -1,0 +1,33 @@
+type Demo implements Node {
+  # The ID of an object
+  id: ID!
+  title: String
+  description: String
+  booking: String
+  location: String
+  links: [DemoLink]
+  logo: String
+  logoHeight: Int
+  logoWidth: Int
+  devGarage: Boolean
+}
+
+type DemoLink {
+  title: String
+  url: String
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+type Query {
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+  demos: [Demo]
+}

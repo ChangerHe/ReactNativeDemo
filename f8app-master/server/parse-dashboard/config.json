@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+        "serverURL": "http://localhost:1337/parse",
+        "appId": "oss-f8-app-2017",
+        "masterKey": "oss-f8-app-2017-mk",
+        "appName": "F8"
+    }
+  ],
+  "users": [
+    {
+      "user": "admin",
+      "pass": "admin"
+    }
+  ]
+}
