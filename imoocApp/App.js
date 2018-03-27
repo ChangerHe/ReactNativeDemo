@@ -2,6 +2,7 @@
 
 var React = require('react');
 var ReactNative = require('react-native');
+var Icon = require('react-native-vector-icons/Ionicons')
 var {
   StyleSheet,
   TabBarIOS,
@@ -32,54 +33,64 @@ var TabBarExample = React.createClass({
       <View style={[styles.tabContent, {backgroundColor: color}]}>
         <Text style={styles.tabText}>{pageText}</Text>
         <Text style={styles.tabText}>{num} re-renders of the {pageText}</Text>
+        <Icon name="rocket" size={30} color="#900" />
       </View>
     );
   },
 
   render: function() {
     return (
-      <TabBarIOS
-        unselectedTintColor="yellow"
-        tintColor="white"
-        barTintColor="darkslateblue">
-        <TabBarIOS.Item
-          title="Blue Tab"
-          icon={{uri: base64Icon, scale: 3}}
-          selected={this.state.selectedTab === 'blueTab'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'blueTab',
-            });
-          }}>
-          {this._renderContent('#414A8C', 'Blue Tab')}
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
-          systemIcon="history"
-          badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
-          selected={this.state.selectedTab === 'redTab'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'redTab',
-              notifCount: this.state.notifCount + 1,
-            });
-          }}>
-          {this._renderContent('#783E33', 'Red Tab', this.state.notifCount)}
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
-          icon={require('./flux.png')}
-          selectedIcon={require('./relay.png')}
-          renderAsOriginal
-          title="More"
-          selected={this.state.selectedTab === 'greenTab'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'greenTab',
-              presses: this.state.presses + 1
-            });
-          }}>
-          {this._renderContent('#21551C', 'Green Tab', this.state.presses)}
-        </TabBarIOS.Item>
-      </TabBarIOS>
+    //   <TabBarIOS>
+    //   <Icon.TabBarItem
+    //     title="Home"
+    //     iconName="ios-home-outline"
+    //     selectedIconName="ios-home"
+    //     >
+    //     <View><Text>Home Tab</Text></View>
+    //   </Icon.TabBarItem>
+    // </TabBarIOS>
+      // <TabBarIOS
+      //   unselectedTintColor="yellow"
+      //   tintColor="white"
+      //   barTintColor="darkslateblue">
+      //   <TabBarIOS.Item
+      //     title="Blue Tab"
+      //     icon={{uri: base64Icon, scale: 3}}
+      //     selected={this.state.selectedTab === 'blueTab'}
+      //     onPress={() => {
+      //       this.setState({
+      //         selectedTab: 'blueTab',
+      //       });
+      //     }}>
+      //     {this._renderContent('#414A8C', 'Blue Tab')}
+      //   </TabBarIOS.Item>
+      //   <TabBarIOS.Item
+      //     systemIcon="history"
+      //     badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
+      //     selected={this.state.selectedTab === 'redTab'}
+      //     onPress={() => {
+      //       this.setState({
+      //         selectedTab: 'redTab',
+      //         notifCount: this.state.notifCount + 1,
+      //       });
+      //     }}>
+      //     {this._renderContent('#783E33', 'Red Tab', this.state.notifCount)}
+      //   </TabBarIOS.Item>
+      //   <TabBarIOS.Item
+      //     icon={require('./flux.png')}
+      //     selectedIcon={require('./relay.png')}
+      //     renderAsOriginal
+      //     title="More"
+      //     selected={this.state.selectedTab === 'greenTab'}
+      //     onPress={() => {
+      //       this.setState({
+      //         selectedTab: 'greenTab',
+      //         presses: this.state.presses + 1
+      //       });
+      //     }}>
+      //     {this._renderContent('#21551C', 'Green Tab', this.state.presses)}
+      //   </TabBarIOS.Item>
+      // </TabBarIOS>
     );
   },
 
