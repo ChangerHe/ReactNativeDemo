@@ -21,7 +21,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'blueTab',
       notifCount: 0,
       presses: 0,
       title: '<TabBarIOS>',

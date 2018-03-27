@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
-import {View, Text, ListView, StyleSheet} from 'react-native'
+import {View, Text, ListView, StyleSheet, TouchableHighlight, Image, Dimensions} from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+// 获取当前可视区的宽度
+const {height, width} = Dimensions.get('window')
 
 const styles = {
     container: {
@@ -11,8 +15,67 @@ const styles = {
     header: {
         paddingTop: 25,
         paddingBottom: 12,
-        width: '100%',
+        width,
         backgroundColor: '#900',
+    },
+    headerTitle: {
+        color: '#fff',
+        fontSize: 16,
+        textAlign: 'center',
+        fontWeight: '600'
+    },
+    item: {
+        width,
+        marginBottom: 10,
+        backgroundColor: '#fff'
+    },
+    thumb: {
+        width,
+        height: width * 0.5,
+        resizeMode: 'cover'
+    },
+    title: {
+        padding: 10,
+        fontSize: 16,
+        color: '#333'
+    },
+    itemFooter: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: '#eee'
+    },
+    handleBox: {
+        padding: 10,
+        flexDirection: 'row',
+        width: width/2 - 0.5,
+        justifyContent: 'center',
+        backgroundColor: '#fff'
+    },
+    play: {
+        position: 'absolute',
+        bottom: 54,
+        right: 14,
+        width: 46,
+        height: 46,
+        paddingTop: 9,
+        paddingLeft: 18,
+        backgroundColor: 'transparent',
+        borderColor: '#fff',
+        borderWidth: 1,
+        color: '#ed7b66'
+    },
+    handleText: {
+        paddingLeft: 12,
+        fontSize: 18,
+        color: '#333',
+    },
+    up: {
+        fontSize: 22,
+        color: '#333',
+    },
+    commentIcon: {
+        fontSize: 22,
+        color: '#333'
     }
 }
 
@@ -21,8 +84,64 @@ export default class List extends Component {
         super(props)
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-        dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+        dataSource: ds.cloneWithRows([
+            {
+                "id":"520000197903055285","thumb":"http://dummyimage.com/600x300/acc669)","video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+            }
+            ,
+            {
+                "id":"320000198304143686","thumb":"http://dummyimage.com/600x300/907bb5)","video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+            }
+            ,
+            {
+                "id":"320000201705039032","thumb":"http://dummyimage.com/600x300/b35020)","video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+            }
+        ]),
         };
+    }
+
+    renderRow(row) {
+        return (
+            <TouchableHighlight>
+                {/* <View style={styles.item}>
+                    <Text style={{color: '#000'}}>{row.id}</Text>
+                    <Text style={{color: '#000'}}>{row.thumb}</Text>
+                    <Text style={{color: '#000'}}>{row.video}</Text>
+                </View> */}
+                <View style={styles.item}>
+                    <Text style={styles.title}>{row.id}</Text>
+                    <Image
+                        source={{uri: row.thumb}}
+                        style={styles.thumb}
+                    />
+                    <Icon
+                        name='caret-right'
+                        size={28}
+                        style={styles.play}
+                    />
+                    <View style={styles.itemFooter}>
+                        <View style={styles.handleBox}>
+                            <Icon
+                                name='tint'
+                                size={28}
+                                style={styles.up}
+                            />
+                            <Text style={styles.handleText}>喜欢</Text>
+                            <Text></Text>
+                        </View>
+                        <View style={styles.handleBox}>
+                            <Icon
+                                name='comments'
+                                size={28}
+                                style={styles.up}
+                            />
+                            <Text style={styles.commentIcon}>评论</Text>
+                            <Text></Text>
+                        </View>
+                    </View>
+                </View>
+            </TouchableHighlight>
+        )
     }
 
     render() {
@@ -31,9 +150,10 @@ export default class List extends Component {
                 <View style={styles.header}>
                    <Text style={styles.headerTitle}>list 页面</Text>
                 </View>
+                {/* 列表视图 */}
                 <ListView 
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => <Text>{rowData}</Text>}
+                    renderRow={this.renderRow}
                     // enableEmptySections={true}
                 />
             </View>
