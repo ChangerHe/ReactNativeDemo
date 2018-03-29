@@ -5150,6 +5150,13 @@ qs@~6.4.0:
   version "6.4.0"
   resolved "http://registry.npm.taobao.org/qs/download/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
+query-string@^6.0.0:
+  version "6.0.0"
+  resolved "http://registry.npm.taobao.org/query-string/download/query-string-6.0.0.tgz#8b8f39447b73e8290d6f5e3581779218e9171142"
+  dependencies:
+    decode-uri-component "^0.2.0"
+    strict-uri-encode "^2.0.0"
+
 querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "http://registry.npm.taobao.org/querystring/download/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
@@ -6173,6 +6180,10 @@ stream-parser@~0.3.1:
   resolved "http://registry.npm.taobao.org/stream-parser/download/stream-parser-0.3.1.tgz#1618548694420021a1182ff0af1911c129761773"
   dependencies:
     debug "2"
+
+strict-uri-encode@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/strict-uri-encode/download/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
 
 string-length@^2.0.0:
   version "2.0.0"

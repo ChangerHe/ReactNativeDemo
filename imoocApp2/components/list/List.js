@@ -3,6 +3,8 @@ import {View, Text, ListView, StyleSheet, TouchableHighlight, Image, Dimensions}
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Mock from 'mockjs'
 
+import request from '../common/request'
+
 // 获取当前可视区的宽度
 const {height, width} = Dimensions.get('window')
 
@@ -85,7 +87,7 @@ export default class List extends Component {
         super(props)
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-            dataSource: ds.cloneWithRows(),
+            dataSource: ds.cloneWithRows([]),
             testData: '11111'
         };
     }
@@ -98,25 +100,33 @@ export default class List extends Component {
     getMockData() {
         // console.error('11111')
         // console.warn('22222')
-        fetch('http://rapapi.org/mockjs/32725/api/creations/?access_token=123')
-            .then((response) => {
-                // console.error(response, '1111')
-                // this.setState({
-                //     // 这里看到获取到的内容中实际是一个字符串, 需要使用JSON.parse对请求到的内容进行解析
-                //     // 注意响应的对象的名称
-                //     testData: response._bodyInit
-                // })
-                return JSON.parse(response._bodyInit)
-            }).then((response) => {
-                var data = Mock.mock(response)
-                console.error(JSON.stringify(data))
-                this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(data.data)
-                })
+        // fetch('http://rapapi.org/mockjs/32725/api/creations/?access_token=123')
+        //     .then((response) => {
+        //         // console.error(response, '1111')
+        //         // this.setState({
+        //         //     // 这里看到获取到的内容中实际是一个字符串, 需要使用JSON.parse对请求到的内容进行解析
+        //         //     // 注意响应的对象的名称
+        //         //     testData: response._bodyInit
+        //         // })
+        //         return JSON.parse(response._bodyInit)
+        //     }).then((response) => {
+        //         var data = Mock.mock(response)
+        //         console.error(JSON.stringify(data))
+        //         this.setState({
+        //             dataSource: this.state.dataSource.cloneWithRows(data.data)
+        //         })
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
+
+        request.get('/api/creations',{
+            access_token: 123
+        }).then((response) => {
+            this.setState({
+                dataSource: this.state.dataSource.cloneWithRows(response.data)
             })
-            .catch((error) => {
-                console.error(error);
-            });
+        })
     }
 
     renderRow(row) {
