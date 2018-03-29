@@ -41,7 +41,7 @@ export default request = {
             })
     },
     post(url, body) {
-        // 使用lodash对内容进行扩展
+        // 使用lodash对内容进行扩展push test
         const options = _.extend(config.header, {
             body: JSON.stringify(body)
         })
