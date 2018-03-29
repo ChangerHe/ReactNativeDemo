@@ -43,4 +43,36 @@ rnpm link react-native-vector-icons
 
 需要注意的是我们使用expo的时候是没法直接使用link的, 所以对于link在expo中的用法还需研究
 
-#
+# 注意点
+
+- 1.listView列表视图
+
+当我们使用`ListView`(列表视图)的时候, 因为需要引入`dataSource`和`renderRow`分别作为数据源和渲染模板的时候, 此时就无法将state中的内容渲染到列表视图中了
+
+另外需要额外注意的是dataSource的用法
+
+```
+// ds作为列表视图的数据对象, 控制列表的改变
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+this.state = {
+    dataSource: ds.cloneWithRows([
+        {
+            "id":"520000197903055285",
+            "thumb":"http://dummyimage.com/600x300/acc669)",
+            "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+        }
+        ,
+        {
+            "id":"320000198304143686",
+            "thumb":"http://dummyimage.com/600x300/907bb5)",
+            "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+        }
+        ,
+        {
+            "id":"320000201705039032",
+            "thumb":"http://dummyimage.com/600x300/b35020)",
+            "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+        }
+    ]),
+};
+```

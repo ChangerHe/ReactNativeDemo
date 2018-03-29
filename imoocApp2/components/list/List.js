@@ -84,20 +84,51 @@ export default class List extends Component {
         super(props)
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-        dataSource: ds.cloneWithRows([
-            {
-                "id":"520000197903055285","thumb":"http://dummyimage.com/600x300/acc669)","video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
-            }
-            ,
-            {
-                "id":"320000198304143686","thumb":"http://dummyimage.com/600x300/907bb5)","video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
-            }
-            ,
-            {
-                "id":"320000201705039032","thumb":"http://dummyimage.com/600x300/b35020)","video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
-            }
-        ]),
+            dataSource: ds.cloneWithRows([
+                {
+                    "id":"520000197903055285",
+                    "thumb":"http://dummyimage.com/600x300/acc669)",
+                    "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+                }
+                ,
+                {
+                    "id":"320000198304143686",
+                    "thumb":"http://dummyimage.com/600x300/907bb5)",
+                    "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+                }
+                ,
+                {
+                    "id":"320000201705039032",
+                    "thumb":"http://dummyimage.com/600x300/b35020)",
+                    "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
+                }
+            ]),
+            testData: '11111'
         };
+    }
+
+    componentDidMount() {
+        this.getMockData()
+    }
+
+    // 获取页面的mock数据
+    getMockData() {
+        // console.error('11111')
+        // console.warn('22222')
+        fetch('http://rapapi.org/mockjs/32725/api/creations/?access_token=123')
+            .then((response) => {
+                console.error(response, '1111')
+                this.setState({
+                    testData: JSON.stringify(response)
+                })
+                return response.json()
+            })
+            .then((responseJson) => {
+                return responseJson.movies;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     renderRow(row) {
@@ -149,6 +180,7 @@ export default class List extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                    <Text style={styles.headerTitle}>list 页面</Text>
+                    <Text>{this.state.testData}</Text>
                 </View>
                 {/* 列表视图 */}
                 <ListView 
