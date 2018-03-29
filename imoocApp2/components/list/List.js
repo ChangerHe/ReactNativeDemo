@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, ListView, StyleSheet, TouchableHighlight, Image, Dimensions} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Mock from 'mockjs'
 
 // 获取当前可视区的宽度
 const {height, width} = Dimensions.get('window')
@@ -84,25 +85,7 @@ export default class List extends Component {
         super(props)
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-            dataSource: ds.cloneWithRows([
-                {
-                    "id":"520000197903055285",
-                    "thumb":"http://dummyimage.com/600x300/acc669)",
-                    "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
-                }
-                ,
-                {
-                    "id":"320000198304143686",
-                    "thumb":"http://dummyimage.com/600x300/907bb5)",
-                    "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
-                }
-                ,
-                {
-                    "id":"320000201705039032",
-                    "thumb":"http://dummyimage.com/600x300/b35020)",
-                    "video":"http://pcad.video.baidu.com/2c186861490224ba1bab125ee9657c91.mp4?_=1522150394539"
-                }
-            ]),
+            dataSource: ds.cloneWithRows(),
             testData: '11111'
         };
     }
@@ -117,14 +100,19 @@ export default class List extends Component {
         // console.warn('22222')
         fetch('http://rapapi.org/mockjs/32725/api/creations/?access_token=123')
             .then((response) => {
-                console.error(response, '1111')
+                // console.error(response, '1111')
+                // this.setState({
+                //     // 这里看到获取到的内容中实际是一个字符串, 需要使用JSON.parse对请求到的内容进行解析
+                //     // 注意响应的对象的名称
+                //     testData: response._bodyInit
+                // })
+                return JSON.parse(response._bodyInit)
+            }).then((response) => {
+                var data = Mock.mock(response)
+                console.error(JSON.stringify(data))
                 this.setState({
-                    testData: JSON.stringify(response)
+                    dataSource: this.state.dataSource.cloneWithRows(data.data)
                 })
-                return response.json()
-            })
-            .then((responseJson) => {
-                return responseJson.movies;
             })
             .catch((error) => {
                 console.error(error);
@@ -134,11 +122,6 @@ export default class List extends Component {
     renderRow(row) {
         return (
             <TouchableHighlight>
-                {/* <View style={styles.item}>
-                    <Text style={{color: '#000'}}>{row.id}</Text>
-                    <Text style={{color: '#000'}}>{row.thumb}</Text>
-                    <Text style={{color: '#000'}}>{row.video}</Text>
-                </View> */}
                 <View style={styles.item}>
                     <Text style={styles.title}>{row.id}</Text>
                     <Image
