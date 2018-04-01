@@ -93,33 +93,11 @@ export default class List extends Component {
     }
 
     componentDidMount() {
-        this.getMockData()
+        this._getMockData()
     }
 
     // 获取页面的mock数据
-    getMockData() {
-        // console.error('11111')
-        // console.warn('22222')
-        // fetch('http://rapapi.org/mockjs/32725/api/creations/?access_token=123')
-        //     .then((response) => {
-        //         // console.error(response, '1111')
-        //         // this.setState({
-        //         //     // 这里看到获取到的内容中实际是一个字符串, 需要使用JSON.parse对请求到的内容进行解析
-        //         //     // 注意响应的对象的名称
-        //         //     testData: response._bodyInit
-        //         // })
-        //         return JSON.parse(response._bodyInit)
-        //     }).then((response) => {
-        //         var data = Mock.mock(response)
-        //         console.error(JSON.stringify(data))
-        //         this.setState({
-        //             dataSource: this.state.dataSource.cloneWithRows(data.data)
-        //         })
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        //     });
-
+    _getMockData() {
         request.get('/api/creations',{
             access_token: 123
         }).then((response) => {
@@ -129,11 +107,13 @@ export default class List extends Component {
         })
     }
 
-    renderRow(row) {
+    _getMoreData
+
+    _renderRow(row) {
         return (
             <TouchableHighlight>
                 <View style={styles.item}>
-                    <Text style={styles.title}>{row.id}</Text>
+                    <Text style={styles.title}>{row.title}</Text>
                     <Image
                         source={{uri: row.thumb}}
                         style={styles.thumb}
@@ -178,7 +158,8 @@ export default class List extends Component {
                 {/* 列表视图 */}
                 <ListView 
                     dataSource={this.state.dataSource}
-                    renderRow={this.renderRow}
+                    renderRow={this._renderRow}
+                    onEndReached={this._getMoreData}
                     // enableEmptySections={true}
                 />
             </View>

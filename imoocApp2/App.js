@@ -29,25 +29,6 @@ export default class App extends Component {
       displayName: 'TabBarExample'
     }
   }
-  // _renderContent(color, pageText, num) {
-  //   return (
-  //     <View
-  //       style={[
-  //       styles.tabContent, {
-  //         backgroundColor: color
-  //       }
-  //     ]}>
-  //       <Text style={styles.tabText}>{pageText}</Text>
-  //       <Text style={styles.tabText}>{num}
-  //         re-renders of the {pageText}</Text>
-  //         {/* <Icon name="rocket" size={30} color="#900" /> */}
-  //         <Icon.Button name="camera-retro" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
-  //           Login with Facebook
-  //         </Icon.Button>
-  //       {/* <Icon name='clock'></Icon> */}
-  //     </View>
-  //   );
-  // }
   render() {
     return (
       <TabBarIOS
@@ -55,13 +36,11 @@ export default class App extends Component {
         tintColor="white"
         barTintColor="darkslateblue">
         <TabBarIOS.Item
-          // title="Blue Tab"
           systemIcon='top-rated'
           selected={this.state.selectedTab === 'blueTab'}
           onPress={() => {
           this.setState({selectedTab: 'blueTab'});
         }}>
-          {/* {this._renderContent('#414A8C', 'Blue Tab')} */}
           <List/>
         </TabBarIOS.Item>
         <TabBarIOS.Item
@@ -76,15 +55,10 @@ export default class App extends Component {
             notifCount: this.state.notifCount + 1
           });
         }}>
-          {/* {this._renderContent('#783E33', 'Red Tab', this.state.notifCount)} */}
           <Edit/>
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          // icon={require('./flux.png')}
-          // selectedIcon={require('./relay.png')}
-          // renderAsOriginal
           systemIcon='recents'
-          // title="More"
           selected={this.state.selectedTab === 'greenTab'}
           onPress={() => {
           this.setState({
@@ -92,7 +66,6 @@ export default class App extends Component {
             presses: this.state.presses + 1
           });
         }}>
-          {/* {this._renderContent('#21551C', 'Green Tab', this.state.presses)} */}
           <Account/>
         </TabBarIOS.Item>
       </TabBarIOS>
