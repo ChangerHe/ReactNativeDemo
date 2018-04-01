@@ -88,21 +88,32 @@ export default class List extends Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             dataSource: ds.cloneWithRows([]),
-            testData: '11111'
+            testData: '11111',
+            // 是否正在加载
+            isLoadingTail: false,
+            nextPage: 2,
+            items: [],
+            total: 1
         };
     }
 
     componentDidMount() {
-        this._getMockData()
+        this._getMockData(1)
     }
 
     // 获取页面的mock数据
-    _getMockData() {
+    _getMockData(page) {
+        this.setState({
+            isLoadingTail: true
+        })
         request.get('/api/creations',{
-            access_token: 123
+            access_token: 123,
+            page
         }).then((response) => {
             this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(response.data)
+                dataSource: this.state.dataSource.cloneWithRows(response.data),
+                items: this.state.items.concat(response.data),
+                isLoadingTail: false
             })
         })
     }
@@ -148,6 +159,18 @@ export default class List extends Component {
         )
     }
 
+    _fetchMoreData() {
+        if(!this._hasMore() || this.state.isLoadingTail) {
+            return 
+        }
+        const page = this.state.nextPage
+        this._getMockData(page).then(() => {
+            this.setState({
+                nextPage: page + 1
+            })
+        })
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -160,7 +183,7 @@ export default class List extends Component {
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}
                     onEndReached={this._getMoreData}
-                    // enableEmptySections={true}
+                    enableEmptySections={true}
                 />
             </View>
         )
