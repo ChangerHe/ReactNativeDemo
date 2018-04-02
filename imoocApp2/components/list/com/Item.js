@@ -110,7 +110,7 @@ export default class Item extends Component {
         title: this.props.row.id,
         component: InnerPage,
         backButtonTitle: 'Custom Back',
-        params: {
+        passProps: {
           row: this.props.row
         }
         // passProps: {depth: this.props.depth ? this.props.depth + 1 : 1},

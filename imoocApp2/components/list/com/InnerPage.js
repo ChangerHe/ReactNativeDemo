@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {View, Text} from 'react-native'
+import Video from 'react-native-video'
+import {View, Text, Alert} from 'react-native'
 
 export default class ListCom extends Component {
     constructor(props) {
@@ -8,13 +9,19 @@ export default class ListCom extends Component {
     }
 
     render() {
-        return (
-          <View style={{flex: 1}}>
-            <Text style={{fontSize: 100, marginTop: 40}}>
-              {/* {this.props.text} */}
-              234
-            </Text>
-          </View>
-        )
+      // Alert.alert(this.props.title)
+      const row = this.props.row
+      return (
+        <View style={{flex: 1}}>
+          <Text style={{marginTop: 70}}>
+            {/* {this.props.text} */}
+            234{row.title}
+          </Text>
+          {/* <Video
+            ref='videoPlayer'
+            source={{uri: row.video}}
+          ></Video> */}
+        </View>
+      )
     }
 }
