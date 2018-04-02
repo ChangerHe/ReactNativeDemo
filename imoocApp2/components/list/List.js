@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import Mock from 'mockjs'
 
 import request from '../common/request'
+import Item from './com/Item'
 
 // 获取当前可视区的宽度
 const {height, width} = Dimensions.get('window')
@@ -114,40 +115,7 @@ export default class List extends Component {
 
     _renderRow(row) {
         return (
-            <TouchableHighlight>
-                <View style={styles.item}>
-                    <Text style={styles.title}>{row.title}</Text>
-                    <Image
-                        source={{uri: row.thumb}}
-                        style={styles.thumb}
-                    />
-                    <Icon
-                        name='caret-right'
-                        size={28}
-                        style={styles.play}
-                    />
-                    <View style={styles.itemFooter}>
-                        <View style={styles.handleBox}>
-                            <Icon
-                                name='tint'
-                                size={28}
-                                style={styles.up}
-                            />
-                            <Text style={styles.handleText}>喜欢</Text>
-                            <Text></Text>
-                        </View>
-                        <View style={styles.handleBox}>
-                            <Icon
-                                name='comments'
-                                size={28}
-                                style={styles.up}
-                            />
-                            <Text style={styles.commentIcon}>评论</Text>
-                            <Text></Text>
-                        </View>
-                    </View>
-                </View>
-            </TouchableHighlight>
+            <Item row={row} />
         )
     }
 
