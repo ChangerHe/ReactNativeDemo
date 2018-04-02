@@ -83,6 +83,19 @@ const styles = {
     }
 }
 
+class EmptyPage extends React.Component {
+  render() {
+    return (
+      <View>
+        <Text>
+          {/* {this.props.text} */}
+          234
+        </Text>
+      </View>
+    );
+  }
+}
+
 export default class Item extends Component {
     constructor(props) {
         super(props)
@@ -103,10 +116,21 @@ export default class Item extends Component {
         }
     }
 
+    onItemNavigate() {
+      this.props.navigator.push({
+        title: '222',
+        component: EmptyPage,
+        backButtonTitle: 'Custom Back',
+        // passProps: {depth: this.props.depth ? this.props.depth + 1 : 1},
+      });
+    }
+
     render() {
         const row = this.props.row
         return (
-            <TouchableHighlight>
+            <TouchableHighlight
+              onPress={this.onItemNavigate.bind(this)}
+            >
                 <View style={styles.item}>
                     <Text style={styles.title}>{row.title}</Text>
                     <Image

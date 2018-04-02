@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {StyleSheet, TabBarIOS, Text, View} from 'react-native'
+import {StyleSheet, TabBarIOS, Text, View, NavigatorIOS} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import List from './components/list/List'
@@ -41,7 +41,17 @@ export default class App extends Component {
           onPress={() => {
           this.setState({selectedTab: 'blueTab'});
         }}>
-          <List/>
+          <NavigatorIOS
+            style={{flex: 1}}
+            initialRoute={{
+              title: '111',
+              component: List,
+              navigationBarHidden: true,
+              // passProps: {onExampleExit},
+            }}
+            tintColor="#008888"
+          />
+          {/* <List/> */}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="search"

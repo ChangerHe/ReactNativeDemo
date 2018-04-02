@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import Mock from 'mockjs'
 
 import request from '../common/request'
-import Item from './com/Item'
+// import Item from './com/Item'
 
 // 获取当前可视区的宽度
 const {height, width} = Dimensions.get('window')
@@ -87,11 +87,29 @@ const styles = {
         fontSize: 22,
         color: '#333',
     },
+    upper: {
+        fontSize: 22,
+        color: '#900'
+    },
     commentIcon: {
         fontSize: 22,
         color: '#333'
     }
 }
+
+class EmptyPage extends React.Component {
+  render() {
+    return (
+      <View>
+        <Text>
+          {/* {this.props.text} */}
+          234
+        </Text>
+      </View>
+    );
+  }
+}
+
 
 export default class List extends Component {
     constructor(props) {
@@ -105,7 +123,8 @@ export default class List extends Component {
             nextPage: 2,
             items: [],
             total: 0,
-            isRefreshing: false
+            isRefreshing: false,
+            up: false
         };
     }
 
@@ -113,9 +132,70 @@ export default class List extends Component {
         this._getMockData(0)
     }
 
+    onLikePress() {
+        // console.error(this.state.up)
+        if (this.state.up) {
+            this.setState({
+                up: false
+            })
+        } else {
+            this.setState({
+                up: true
+            })
+        }
+    }
+
+    onItemNavigate() {
+      this.props.navigator.push({
+        title: '222',
+        component: EmptyPage,
+        backButtonTitle: 'Custom Back',
+        // passProps: {depth: this.props.depth ? this.props.depth + 1 : 1},
+      });
+    }
+
     _renderRow(row) {
         return (
-            <Item row={row} />
+            // <Item row={row}/>
+            <TouchableHighlight
+              onPress={this.onItemNavigate.bind(this)}
+            >
+              <View style={styles.item}>
+                  <Text style={styles.title}>{row.title}</Text>
+                  <Image
+                      source={{uri: row.thumb}}
+                      style={styles.thumb}
+                  />
+                  <Icon
+                      name='caret-right'
+                      size={28}
+                      style={styles.play}
+                  />
+                  <View style={styles.itemFooter}>
+                      <TouchableHighlight onPress={this.onLikePress.bind(this)}>
+                          <View style={styles.handleBox}>
+                              <Icon
+                                  name='tint'
+                                  size={28}
+                                  style={!this.state.up ? styles.up: styles.upper }
+                              />
+                              <Text style={styles.handleText}>喜欢</Text>
+                              <Text></Text>
+                          </View>
+                      </TouchableHighlight>
+                      
+                      <View style={styles.handleBox}>
+                          <Icon
+                              name='comments'
+                              size={28}
+                              style={styles.up}
+                          />
+                          <Text style={styles.commentIcon}>评论</Text>
+                          <Text></Text>
+                      </View>
+                  </View>
+              </View>
+          </TouchableHighlight>
         )
     }
 
@@ -213,7 +293,7 @@ export default class List extends Component {
                 {/* 列表视图 */}
                 <ListView 
                     dataSource={this.state.dataSource}
-                    renderRow={this._renderRow}
+                    renderRow={this._renderRow.bind(this)}
                     // 触底之后的触发事件
                     onEndReached={this._fetchMoreData.bind(this)}
                     // 离底部多远开始刷新
