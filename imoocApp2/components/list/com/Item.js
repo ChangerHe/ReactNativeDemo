@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {View, Text, TouchableHighlight, Image, Dimensions, Alert} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+import InnerPage from './InnerPage'
+
 // 获取当前可视区的宽度
 const {height, width} = Dimensions.get('window')
 
@@ -83,19 +85,6 @@ const styles = {
     }
 }
 
-class EmptyPage extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text>
-          {/* {this.props.text} */}
-          234
-        </Text>
-      </View>
-    );
-  }
-}
-
 export default class Item extends Component {
     constructor(props) {
         super(props)
@@ -118,9 +107,12 @@ export default class Item extends Component {
 
     onItemNavigate() {
       this.props.navigator.push({
-        title: '222',
-        component: EmptyPage,
+        title: this.props.row.id,
+        component: InnerPage,
         backButtonTitle: 'Custom Back',
+        params: {
+          row: this.props.row
+        }
         // passProps: {depth: this.props.depth ? this.props.depth + 1 : 1},
       });
     }

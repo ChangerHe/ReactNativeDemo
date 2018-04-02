@@ -97,27 +97,12 @@ const styles = {
     }
 }
 
-class EmptyPage extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text>
-          {/* {this.props.text} */}
-          234
-        </Text>
-      </View>
-    );
-  }
-}
-
-
 export default class List extends Component {
     constructor(props) {
         super(props)
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             dataSource: ds.cloneWithRows([]),
-            testData: '11111',
             // 是否正在加载
             isLoadingTail: false,
             nextPage: 2,
@@ -226,7 +211,6 @@ export default class List extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                    <Text style={styles.headerTitle}>list 页面</Text>
-                    <Text>{this.state.testData}</Text>
                 </View>
                 {/* 列表视图 */}
                 <ListView 

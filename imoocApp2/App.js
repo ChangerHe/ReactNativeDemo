@@ -44,7 +44,7 @@ export default class App extends Component {
           <NavigatorIOS
             style={{flex: 1}}
             initialRoute={{
-              title: '111',
+              title: 'list',
               component: List,
               navigationBarHidden: true,
               // passProps: {onExampleExit},
