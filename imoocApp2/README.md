@@ -77,7 +77,121 @@ this.state = {
 };
 ```
 
-##### 通过listView实现懒加载
+##### 通过listView实现上拉加载更多
+
+在listView上增加属性onEndReached,并定义一个相应的方法
+
+onEndReached表示触底所对应发生的触底事件
+
+我们定义在触底之后, 调用一个_fetchMoreData事件, 当有更多数据, 且数据不是在加载中状态时, 我们再次调用getMockData去请求更多的数据, 拼合到之前的数据列表中, 并实现渲染即可实现出类似于数据加载更多的效果
+
+在真实生产环境中, 我们需要在请求中请求到每次的数据的size和page等数据, 在每次请求时, 将size和page也作为一个状态去进行管理, 每次多请求数据时, 内容对应的size和page根据需求进行增加, 并注意在数据每次返回时, 返回一个total的字段, 表示数据总量
+
+数据总量的作用是, 当请求到的数据数组长度小于数据总量的时候, 表示仍然是有数据的, 此时才可再次请求, 否则应告知用户已经没有更多数据
+
+也就是上面实现的_hasMore的方法的作用
+
+```
+_fetchMoreData() {
+    // 有更多数据, 且当前没有处于加载状态时
+    if(!this._hasMore() || this.state.isLoadingTail) {
+        return 
+    }
+    const page = this.state.nextPage
+    // console.error(page)
+    this._getMockData(page)
+    // 因为是异步的, 下面这个不是稳妥的方案
+    this.setState({
+        nextPage: page + 1
+    })
+}
+```
+
+另外需要注意下对于请求到的数据的处理, 这里我定义了一个items的空数组对请求到的数据进行保存, 渲染内容以items这个state的状态数据为准
+
+```
+f (response.success) {
+    // console.error(response.total)
+    // 加载太快看不到加载效果, 所以加一个延时
+    let time = 0
+    if(page !== 0) {
+        time = 2000
+    }
+    setTimeout(() => {
+        let data
+        if (page !== 0) {
+            data = this.state.items.concat(response.data)
+        } else {
+            data = response.data
+        }
+        this.setState({
+            items: data,
+            isLoadingTail: false,
+            isRefreshing: false,
+            total: response.total
+        }, () => {
+            this.setState({
+                dataSource: this.state.dataSource.cloneWithRows(this.state.items),
+            })
+        })
+    }, time);
+}
+```
+
+注意这个items的处理, 当page不等于0, 也就是不是第一次加载的时候, 才对page进行concat, 因为考虑到上拉刷新的情况, 刷新是数据是覆盖的,setState是一个异步的处理过程, 我们将items setState之后, 就可以在回调中去使用这个保存好的items的值了
+
+另外一点的优化是, 目前我们加载的时候是没有任何的额外提示的, 这样其实给到用户的感知其实是不好的, 我们可以使用renderFooter来对页面的底部进行渲染
+
+```
+_renderFooter() {
+    if(!this._hasMore()) {
+        return (
+            <View style={{textAlign: 'center'}}><Text>没有更多了~</Text></View>
+        )
+    } else if(this.state.total !== 0) {
+        return <ActivityIndicator/>
+    }
+}
+```
+
+当已经没有更多数据时, 显示的是没有更多的提示
+
+当还有数据在加载的时候显示ActivityIndicator这个组件, 这个组件用于显示一个圆形的loading提示符号, 提示用户正在加载中
+
+相关参数 
+
+> onEndReachedThreshold  传入数字, 表示触底的范围
+
+> showsVerticalScrollIndicator 传入布尔值, 表示垂直滚动条是否显示
+
+##### 通过listView实现下拉刷新
+
+在listView上我们可以调用refreshControl方法, 表示下拉刷新的控制, 同步配合RefreshControl这个组件, 来实现刷新时的显示效果
+
+RefreshControl这一组件可以用在ScrollView和ListView上, 用于为其添加下拉刷新功能
+
+```
+refreshControl={
+    <RefreshControl
+        // 是否在刷新的状态
+        refreshing={this.state.isRefreshing}
+        // 视图开始刷新时调用
+        onRefresh={this._onRefresh.bind(this)}
+        // 指定刷新指示器的颜色
+        tintColor="#ff0000"
+        // 指定刷新指示器下面显示的文字
+        title="Loading..."
+        // 指定刷新指示器的颜色
+        titleColor="#00ff00"
+        // 指定至少一种颜色用来绘制刷新指示器
+        colors={['#ff0000', '#00ff00', '#0000ff']}
+        // 指定刷新指示器的背景色
+        progressBackgroundColor="#ffff00"
+        // 指定刷新指示器的垂直起始位置
+        progressViewOffset={10}
+    />
+}
+```
 
 
 
