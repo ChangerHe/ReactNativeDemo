@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Video from 'react-native-video'
-import {View, Text, Alert, Video} from 'react-native'
+import {View, Text, Alert} from 'react-native'
 
 export default class ListCom extends Component {
     constructor(props) {
@@ -10,7 +10,7 @@ export default class ListCom extends Component {
 
     render() {
       const row = this.props.row
-      console.error(row.video)
+      // console.error(row.video)
       return (
         <View style={{flex: 1}}>
           <Text style={{marginTop: 70}}>
