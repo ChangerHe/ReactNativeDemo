@@ -5296,6 +5296,10 @@ react-native-vector-icons@4.5.0, react-native-vector-icons@^4.5.0:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
+react-native-video-player@^0.9.1:
+  version "0.9.1"
+  resolved "http://registry.npm.taobao.org/react-native-video-player/download/react-native-video-player-0.9.1.tgz#55f04039e074eb7ad500ca27c9630c5f2c63fde1"
+
 react-native-video@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/react-native-video/download/react-native-video-2.0.0.tgz#f33fa6fb7e7e3c93ab5787944cefd58bf7355867"

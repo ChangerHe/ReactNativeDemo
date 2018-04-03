@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Video from 'react-native-video'
+import VideoPlayer from 'react-native-video-player'
 import {View, Text, Alert} from 'react-native'
 
 export default class ListCom extends Component {
@@ -11,6 +11,7 @@ export default class ListCom extends Component {
     render() {
       // Alert.alert(this.props.title)
       const row = this.props.row
+      console.error(row.video)
       return (
         <View style={{flex: 1}}>
           <Text style={{marginTop: 70}}>
@@ -21,6 +22,7 @@ export default class ListCom extends Component {
             ref='videoPlayer'
             source={{uri: row.video}}
           ></Video> */}
+          <VideoPlayer video={row.video} />
         </View>
       )
     }
