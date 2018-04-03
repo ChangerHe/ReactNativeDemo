@@ -16,10 +16,10 @@ export default class ListCom extends Component {
           <Text style={{marginTop: 70}}>
             234{row.title}
           </Text>
-          {/* <Video
+          <Video
             ref='videoPlayer'
             source={{uri: row.video}}
-          ></Video> */}
+          ></Video>
         </View>
       )
     }
