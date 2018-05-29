@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"f8app_initial._Cardinality"},{"v":2,"unique":true,"key":{"className":1,"column":1},"name":"className_1_column_1","background":true,"ns":"f8app_initial._Cardinality"}]}
