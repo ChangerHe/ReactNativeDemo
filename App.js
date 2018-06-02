@@ -1,58 +1,79 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React from 'react';
+import { View, Text, Button} from 'react-native';
+import {createStackNavigator} from 'react-navigation';
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-type Props = {};
-export default class App extends Component<Props> {
+class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <View
+        style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <Text>Home Screen</Text>
+        <Button
+          title = "Go to Details"
+          onPress = {
+              () => this.props.navigation.navigate('Details', {
+                itemId: 86,
+                otherParam: 'anything you want here',
+              })
+        }
+        />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+class DetailsScreen extends React.Component {
+  // constructor() {
+  //   super(props)
+  // }
+  render() {
+    const {navigation} = this.props;
+    const itemId = navigation.getParam('itemId', 'NO-ID');
+    const otherParam = navigation.getParam('otherParam', 'some default value');
+    return (
+      <View
+        style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <Text>Details Screen</Text>
+        <Text>{itemId}</Text>
+        <Text>{otherParam}</Text>
+        <Button
+          title="Go to Details... again"
+          onPress={() => this.props.navigation.push('Details')}
+        />  
+        <Button
+          title="Go to Home"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
+        <Button
+          title="Go back"
+          onPress={() => this.props.navigation.goBack()}
+        />
+        <Button
+          title="Go back"
+          onPress={() => this.props.navigation.popToTop()}
+        />
+      </View>
+    );
+  }
+}
+
+const RootStack = createStackNavigator({
+  Home: HomeScreen,  // 通过createStackNavigator来进行页面的路由配置
+  Details: DetailsScreen
+}, {
+  initialRouteName: 'Home'  // 初始默认的路由
 });
+
+export default class App extends React.Component {
+  render() {
+    return <RootStack/>;
+  }
+}
