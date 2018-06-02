@@ -3,6 +3,9 @@ import { View, Text, Button} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
 
 class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Home'
+  }
   render() {
     return (
       <View
@@ -15,10 +18,10 @@ class HomeScreen extends React.Component {
         <Button
           title = "Go to Details"
           onPress = {
-              () => this.props.navigation.navigate('Details', {
-                itemId: 86,
-                otherParam: 'anything you want here',
-              })
+            () => this.props.navigation.navigate('Details', {
+              itemId: 86,
+              otherParam: 'anything you want here',
+            })
         }
         />
       </View>
@@ -27,6 +30,18 @@ class HomeScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
+  static navigationOptions = ({navigation}) => {
+    return {
+      title: navigation.getParam('otherParam', 'a default title'),
+      // headerStyle: {
+      //   backgroundColor: '#f4511e',
+      // },
+      // headerTintColor: '#fff',
+      // headerTitleStyle: {
+      //   fontWeight: 'bold',
+      // },
+    }
+  }
   // constructor() {
   //   super(props)
   // }
@@ -57,8 +72,12 @@ class DetailsScreen extends React.Component {
           onPress={() => this.props.navigation.goBack()}
         />
         <Button
-          title="Go back"
+          title="Go top"
           onPress={() => this.props.navigation.popToTop()}
+        />
+        <Button
+          title="set title"
+          onPress={() => this.props.navigation.setParams({otherParam: 'changed'})}
         />
       </View>
     );
@@ -69,7 +88,16 @@ const RootStack = createStackNavigator({
   Home: HomeScreen,  // 通过createStackNavigator来进行页面的路由配置
   Details: DetailsScreen
 }, {
-  initialRouteName: 'Home'  // 初始默认的路由
+  initialRouteName: 'Home',  // 初始默认的路由
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  },
 });
 
 export default class App extends React.Component {
