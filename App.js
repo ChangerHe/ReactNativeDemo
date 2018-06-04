@@ -1,10 +1,47 @@
 import React from 'react';
-import { View, Text, Button} from 'react-native';
+import { View, Text, Button, Image} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
+
+class LogoTitle extends React.Component {
+  render() {
+    return (<View
+      style={{
+        width: '100%',
+        height: 30,
+        alignItems: 'center'
+      }}
+    >
+      <Image
+        source={require('./assets/delete.png')}
+        style={{
+        width: 30,
+        height: 30,
+        flex: 0,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}/>
+    </View>);
+  }
+}
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Home'
+    headerTitle: <LogoTitle />,
+    // 同样的, 对标题左侧和右侧, 也是一样可以进行设置的
+    headerRight: (
+      <Button
+        onPress={() => alert('This is a button!')}
+        title="Info"
+        color="#000"
+      />
+    ),
+    headerLeft: (
+      <Button
+        onPress={() => alert('This is a button!')}
+        title="Info"
+        color="#000"
+      />
+    ),
   }
   render() {
     return (
