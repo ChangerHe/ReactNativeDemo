@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button, Image} from 'react-native';
-import {createStackNavigator} from 'react-navigation';
+import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class LogoTitle extends React.Component {
   render() {
@@ -8,6 +9,8 @@ class LogoTitle extends React.Component {
       style={{
         width: '100%',
         height: 30,
+        flexDirection: 'row',
+        justifyContent: 'center',
         alignItems: 'center'
       }}
     >
@@ -20,6 +23,9 @@ class LogoTitle extends React.Component {
         justifyContent: 'center',
         alignItems: 'center'
       }}/>
+      <Text>
+        我是标题
+      </Text>
     </View>);
   }
 }
@@ -63,6 +69,25 @@ class HomeScreen extends React.Component {
         />
       </View>
     );
+  }
+}
+
+class SettingsScreen extends React.Component {
+  static navigationOptions = {
+    title: 'a default title',
+  }
+  render() {
+    console.log(1112222)
+    return (
+      <View
+        style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <Text>我是setting</Text>
+      </View>
+    )
   }
 }
 
@@ -137,8 +162,34 @@ const RootStack = createStackNavigator({
   },
 });
 
+const TabStack = createBottomTabNavigator({
+  Home: HomeScreen,
+  Settings: SettingsScreen
+}, {
+  navigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, tintColor }) => {
+      const { routeName } = navigation.state;
+      let iconName;
+      console.log(navigation, 'navigation')
+      if (routeName === 'Home') {
+        iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+      } else if (routeName === 'Settings') {
+        iconName = `ios-options${focused ? '' : '-outline'}`;
+      }
+
+      // You can return any component that you like here! We usually use an
+      // icon component from react-native-vector-icons
+      return <Ionicons name={iconName} size={25} color={tintColor} />;
+    },
+  }),
+  tabBarOptions: {
+    activeTintColor: 'red',
+    inactiveTintColor: 'gray',
+  },
+})
+
 export default class App extends React.Component {
   render() {
-    return <RootStack/>;
+    return <TabStack/>;
   }
 }
