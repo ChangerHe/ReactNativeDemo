@@ -58,6 +58,7 @@ class HomeScreen extends React.Component {
         justifyContent: 'center'
       }}>
         <Text>Home Screen</Text>
+        <Ionicons name='logo-angular' size={30} color='blue'/>
         <Button
           title = "Go to Details"
           onPress = {
@@ -163,7 +164,7 @@ const RootStack = createStackNavigator({
 });
 
 const TabStack = createBottomTabNavigator({
-  Home: HomeScreen,
+  Home: RootStack,
   Settings: SettingsScreen
 }, {
   navigationOptions: ({ navigation }) => ({
