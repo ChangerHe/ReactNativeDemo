@@ -6,7 +6,8 @@ import {
     Image,
     View,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+		SafeAreaView
 } from 'react-native';
 
 
@@ -18,10 +19,12 @@ export default class Cinemas extends Component {
     render() {
         const {state,goBack}=this.props.navigation;
         return (
-            <View  style={styles.parent}>
-                <Text style={styles.view1}>我的影院1</Text>
-                <Text style={styles.view2}>我的影院2</Text>
-            </View>
+						<SafeAreaView style={styles.container}>
+							<View  style={styles.parent}>
+									<Text style={styles.view1}>我的影院1</Text>
+									<Text style={styles.view2}>我的影院2</Text>
+							</View>
+						</SafeAreaView>
         );
     }
 }
@@ -29,6 +32,7 @@ export default class Cinemas extends Component {
 const styles = StyleSheet.create({
     parent:{
         flex:1,
+				width: '100%'
     },
     view1:{
         backgroundColor:'#676677',
@@ -48,8 +52,14 @@ const styles = StyleSheet.create({
         borderRadius:10,
 
         elevation:5,
-
-    }
-
+    },
+		container: {
+        flex: 0,
+				width: '100%',
+				height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#e5fffd',
+    },
 
 });

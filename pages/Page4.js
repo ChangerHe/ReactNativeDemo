@@ -5,6 +5,7 @@ import {
     Text,
     View,
     Button,
+		SafeAreaView,
 } from 'react-native';
 
 export default class Page4 extends Component {
@@ -12,6 +13,8 @@ export default class Page4 extends Component {
     render() {
         const {navigation}=this.props;
         return (
+					
+					<SafeAreaView style={styles.container}>
             <View style={styles.container}>
                 <Text>欢迎来到page4</Text>
                 <Button
@@ -28,15 +31,18 @@ export default class Page4 extends Component {
                 />
 
             </View>
+					</SafeAreaView>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0,
+				width: '100%',
+				height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#c5ffe1',
-    }
+        backgroundColor: '#e5fffd',
+    },
 });

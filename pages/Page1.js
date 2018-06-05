@@ -6,7 +6,8 @@ import {
     Image,
     View,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity,
+		SafeAreaView
 } from 'react-native';
 
 
@@ -18,6 +19,7 @@ export default class Cinemas extends Component {
     render() {
         const {state,goBack}=this.props.navigation;
         return (
+					<SafeAreaView  style={styles.container}>
             <View  style={styles.parent}>
 
                     <Text style={[styles.childfirst,styles.margin]}> View1 </Text>
@@ -28,12 +30,21 @@ export default class Cinemas extends Component {
                     <Text style={styles.childthird}> View3 </Text>
 
             </View>
+					
+					</SafeAreaView>
         );
     }
 }
 
 const styles = StyleSheet.create({
-
+		container: {
+        flex: 0,
+				width: '100%',
+				height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#e5fffd',
+    },
     parent:{
         flex:1,
         flexDirection:'row',

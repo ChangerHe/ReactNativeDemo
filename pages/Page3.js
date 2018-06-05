@@ -7,6 +7,7 @@ import {
     FlatList,
     RefreshControl,
     ActivityIndicator,
+		SafeAreaView,
 } from 'react-native';
 
 const CITY_NAMES = ['北京', '上海', '广州','杭州', '苏州'];
@@ -65,6 +66,7 @@ export default class FlatListDemo extends Component {
 
     render() {
         return (
+					<SafeAreaView>
             <View style={styles.container}>
                 <FlatList
                     //1:数据的获取和渲染
@@ -95,13 +97,19 @@ export default class FlatListDemo extends Component {
                     }}
                 />
             </View>
+					</SafeAreaView>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0,
+				width: '100%',
+				height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#e5fffd',
     },
     item: {
         backgroundColor: '#c5ecff',
