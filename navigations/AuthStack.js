@@ -17,7 +17,7 @@ class SignInScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <View style={{'flex': 1}}>
           <Button title="Sign in!" onPress={this._signInAsync} />
           <Button title="loading!" onPress={() => {
@@ -45,7 +45,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <View style={{'flex': 1}}>
           <Button title="Show me more of the app" onPress={this._showMoreApp} />
           <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
@@ -65,6 +65,16 @@ class HomeScreen extends React.Component {
 }
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 0,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#e5fffd',
+  }
+});
 
 
 export default createStackNavigator({ SignIn: SignInScreen, Home: HomeScreen }, {initialRouteName: 'Home'});

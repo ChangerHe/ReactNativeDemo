@@ -122,18 +122,24 @@ const Drawer= createDrawerNavigator({
 //顶部导航，主入口（导出），要放在其他导航后面，（加载顺序）
 export const AppStackNavigator=createStackNavigator({
     Home:{
-        screen:Home
+        screen:Home,
+        navigationOptions: {
+            // title: "This is TabNav"
+            header: null
+        }
     },
     TabNav:{    //全部的底部导航
         screen:AppTabNavigators,
         navigationOptions:{
-            title:"This is TabNav"
+            title:"This is TabNav",
+            header: null
         }
     },
     DrawerNav:{   //全部的抽屉导航
         screen:Drawer,
         navigationOptions:{
-            title:"This is DrawerNav"
+            title:"This is DrawerNav",
+            header: null
         }
     }
 

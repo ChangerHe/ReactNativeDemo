@@ -8,7 +8,8 @@ import {
     FlatList,
     TouchableOpacity,
     SafeAreaView,
-    Alert
+    Alert,
+    TouchableNativeFeedback
 } from 'react-native';
 
 export default class Cinemas extends Component {
@@ -48,7 +49,13 @@ export default class Cinemas extends Component {
                             touchable view
                         </Text>
                     </TouchableOpacity>
-
+                    {/* 点击涟漪效果ios不支持 */}
+                    <TouchableNativeFeedback
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={{ width: 150, height: 100, backgroundColor: 'red' }}>
+                            <Text style={{ margin: 30 }}>点我有涟漪</Text>
+                        </View>
+                    </TouchableNativeFeedback>
                 </View>
 
             </SafeAreaView>
@@ -90,6 +97,11 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         fontSize: 13
+    },
+    blocktest: {
+        width: 300,
+        height: 300,
+        color: '#ccc'
     },
     margin: {
 
