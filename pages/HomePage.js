@@ -38,9 +38,9 @@ export default class App extends Component {
                     <FadeInView style={{width: 200, height: 100, backgroundColor: 'red'}}>
                         <Text>This is FadeInView</Text>
                     </FadeInView>
-                    <Button title='to press larger button page' onPress={() => navigation.navigate('PressLargerButton')}>
-
-                    </Button>
+                    <Button title='to press larger button page' onPress={() => navigation.navigate('PressLargerButton')} />
+                    <Button title='to press larger scroll page' onPress={() => navigation.navigate('ScrollViewPage')} />
+                    <Button title='to press GestureBall page' onPress={() => navigation.navigate('GestureBall')} />
                 </View>
             </SafeAreaView>
 

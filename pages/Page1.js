@@ -50,6 +50,7 @@ export default class Cinemas extends Component {
                         </Text>
                     </TouchableOpacity>
                     {/* 点击涟漪效果ios不支持 */}
+                    <Text>点击涟漪效果ios不支持</Text>
                     <TouchableNativeFeedback
                         background={TouchableNativeFeedback.SelectableBackground()}>
                         <View style={{ width: 150, height: 100, backgroundColor: 'red' }}>

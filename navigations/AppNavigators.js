@@ -18,6 +18,8 @@ import  Page4 from '../pages/Page4';
 import  Page5 from '../pages/Page5';
 
 import PressLargerButton from '../pages/PressLargerButton';
+import ScrollViewPage from '../pages/ScrollViewPage';
+import GestureBall from '../pages/GestureBall';
 
 
 //底部导航
@@ -134,6 +136,20 @@ export const AppStackNavigator=createStackNavigator({
         screen: PressLargerButton,
         navigationOptions: {
             title: "PressLargerButton"
+            // header: null
+        }
+    },
+    ScrollViewPage:{
+        screen: ScrollViewPage,
+        navigationOptions: {
+            title: "ScrollViewPage"
+            // header: null
+        }
+    },
+    GestureBall:{
+        screen: GestureBall,
+        navigationOptions: {
+            title: "GestureBall"
             // header: null
         }
     },
