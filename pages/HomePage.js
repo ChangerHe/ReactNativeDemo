@@ -1,47 +1,49 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import {
     StyleSheet,
     Text,
     View,
     Button,
-		AsyncStorage,
-		SafeAreaView
+    AsyncStorage,
+    SafeAreaView
 } from 'react-native';
 
+import FadeInView from '../components/FadeInView'
 
 export default class App extends Component {
     static navigationOptions = {
-        title: '主页',
-
+        title: '主页'
     };
-		_signOutAsync = async () => {
-			await AsyncStorage.clear();
-			this.props.navigation.navigate('Auth');
-		};
+    _signOutAsync = async() => {
+        await AsyncStorage.clear();
+        this
+            .props
+            .navigation
+            .navigate('Auth');
+    };
     render() {
-        const {navigation} =this.props;
+        const {navigation} = this.props;
         return (
-		      <SafeAreaView style={styles.container}>
-					  <View style={styles.container}>
-                <Button
-                    title="go to TabNav"
-                    onPress={()=>navigation.navigate('TabNav')}
-                />
+            <SafeAreaView style={styles.container}>
+                <View style={styles.container}>
+                    <Button title="go to TabNav" onPress={() => navigation.navigate('TabNav')}/>
 
-                <Text/>
+                    <Text/>
 
-                <Button
-                    title="go to DrawerNav"
-                    onPress={()=>navigation.navigate('DrawerNav')}
-                />
-                <Button
-                    title="sign out"
-                    onPress={()=>this._signOutAsync()}
-                />
-            </View>
-					</SafeAreaView>			
-          
+                    <Button
+                        title="go to DrawerNav"
+                        onPress={() => navigation.navigate('DrawerNav')}/>
+                    <Button title="sign out" onPress={() => this._signOutAsync()}/>
+                    <FadeInView style={{width: 200, height: 100, backgroundColor: 'red'}}>
+                        <Text>This is FadeInView</Text>
+                    </FadeInView>
+                    <Button title='to press larger button page' onPress={() => navigation.navigate('PressLargerButton')}>
+
+                    </Button>
+                </View>
+            </SafeAreaView>
+
         );
     }
 }
@@ -49,10 +51,10 @@ export default class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 0,
-				width: '100%',
-				height: '100%',
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#e5fffd',
+        backgroundColor: '#e5fffd'
     }
 });

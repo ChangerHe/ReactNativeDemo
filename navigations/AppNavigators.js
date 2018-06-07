@@ -17,6 +17,8 @@ import  Page3 from '../pages/Page3';
 import  Page4 from '../pages/Page4';
 import  Page5 from '../pages/Page5';
 
+import PressLargerButton from '../pages/PressLargerButton';
+
 
 //底部导航
  const AppTabNavigators =createTabNavigator({
@@ -128,18 +130,25 @@ export const AppStackNavigator=createStackNavigator({
             header: null
         }
     },
+    PressLargerButton:{
+        screen: PressLargerButton,
+        navigationOptions: {
+            title: "PressLargerButton"
+            // header: null
+        }
+    },
     TabNav:{    //全部的底部导航
         screen:AppTabNavigators,
         navigationOptions:{
             title:"This is TabNav",
-            header: null
+            // header: null
         }
     },
     DrawerNav:{   //全部的抽屉导航
         screen:Drawer,
         navigationOptions:{
             title:"This is DrawerNav",
-            header: null
+            // header: null
         }
     }
 
