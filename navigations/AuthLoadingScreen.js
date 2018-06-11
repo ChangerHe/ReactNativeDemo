@@ -22,7 +22,7 @@ export default class AuthLoadingScreen extends React.Component {
 
 			// This will switch to the App screen or Auth screen and this loading
 			// screen will be unmounted and thrown away.
-			this.props.navigation.navigate(userToken ? 'Auth' : 'App');
+			this.props.navigation.navigate(userToken ? 'App' : 'Auth');
 			
 		}, 1000);
   };
@@ -30,7 +30,7 @@ export default class AuthLoadingScreen extends React.Component {
   // Render any loading content that you like here
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
 				<View style={{'flex': 1}}>
 					<ActivityIndicator />
 					<StatusBar barStyle="light-content" />
@@ -39,3 +39,14 @@ export default class AuthLoadingScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 0,
+				width: '100%',
+				height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#e5fffd',
+    }
+});

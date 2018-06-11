@@ -55,7 +55,7 @@ import GestureBall from '../pages/GestureBall';
     Page3:{
         screen:Page3,
         navigationOptions:{
-            tabBarLabel: 'page3',
+            tabBarLabel: 'pa111ge3',
             tabBarIcon: (({tintColor, focused}) => (
                 <Ionicons
                     name={focused?'ios-clock':'ios-clock-outline'}
@@ -68,7 +68,7 @@ import GestureBall from '../pages/GestureBall';
     }
 
 },{
-    tabBarPosition:'bottom',//位置
+    tabBarPosition:'top',//位置
     tabBarOptions: {
         showIcon: true,//是否显示图标！！！！！！！
         style: {

@@ -7,7 +7,8 @@ import {
     FlatList,
     RefreshControl,
     ActivityIndicator,
-		SafeAreaView,
+    SafeAreaView,
+		// StatusBar
 } from 'react-native';
 
 const CITY_NAMES = ['北京', '上海', '广州','杭州', '苏州'];
@@ -68,6 +69,10 @@ export default class FlatListDemo extends Component {
         return (
 					<SafeAreaView>
             <View style={styles.container}>
+								{/* <StatusBar
+									barStyle="light-content"
+									backgroundColor="#6a51ae"
+								/> */}
                 <FlatList
                     //1:数据的获取和渲染
                     data={this.state.dataArray}

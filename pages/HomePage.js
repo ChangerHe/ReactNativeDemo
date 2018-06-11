@@ -5,8 +5,10 @@ import {
     Text,
     View,
     Button,
-    AsyncStorage,
-    SafeAreaView
+		AsyncStorage,
+		SafeAreaView,
+		Image
+		// StatusBar
 } from 'react-native';
 
 import FadeInView from '../components/FadeInView'
@@ -25,11 +27,17 @@ export default class App extends Component {
     render() {
         const {navigation} = this.props;
         return (
-            <SafeAreaView style={styles.container}>
-                <View style={styles.container}>
-                    <Button title="go to TabNav" onPress={() => navigation.navigate('TabNav')}/>
-
-                    <Text/>
+		      <SafeAreaView style={styles.container}>
+					  <View style={styles.container}>
+								{/* <StatusBar
+									barStyle="light-content"
+									backgroundColor="#6a51ae"
+								/> */}
+								<Image source={require('../assets/delete.png')} />
+                <Button
+                    title="go to TabNav"
+                    onPress={()=>navigation.navigate('TabNav')}
+                />
 
                     <Button
                         title="go to DrawerNav"

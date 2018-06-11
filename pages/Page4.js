@@ -6,6 +6,7 @@ import {
     View,
     Button,
 		SafeAreaView,
+		// StatusBar,
 } from 'react-native';
 
 export default class Page4 extends Component {
@@ -15,6 +16,10 @@ export default class Page4 extends Component {
         return (
 					
 					<SafeAreaView style={styles.container}>
+						{/* <StatusBar
+							barStyle="light-content"
+							backgroundColor="#6a51ae"
+						/> */}
             <View style={styles.container}>
                 <Text>欢迎来到page4</Text>
                 <Button
