@@ -106,7 +106,7 @@ export default class Page4 extends React.Component {
 
                             <Text
                                 style={{
-                                fontSize: 16, 
+                                fontSize: 14, 
                                 color: this.state.activeStack === 'bus'?'blue': '#ccc'
                             }}>定制巴士</Text>
                         </View>
@@ -119,7 +119,7 @@ export default class Page4 extends React.Component {
 
                             <Text
                                 style={{
-                                fontSize: 16, 
+                                fontSize: 14, 
                                 color: this.state.activeStack === 'transit'?'blue': '#ccc'
                             }}>公交查询</Text>
                         </View>
@@ -133,10 +133,10 @@ export default class Page4 extends React.Component {
                         }}>
                             <Text
                                 style={{
-                                fontSize: 16, 
+                                fontSize: 14, 
                                 color: this.state.activeStack === 'holiday'?'blue': '#ccc'
                             }}>假日专线</Text>
-                            <Ionicons name='md-bonfire' size={18} style={{
+                            <Ionicons name='md-bonfire' size={14} style={{
                                 color: this.state.activeStack === 'holiday'?'blue': '#ccc'
                             }}/>
                         </View>
