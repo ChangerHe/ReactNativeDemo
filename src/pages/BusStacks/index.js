@@ -19,10 +19,11 @@ export default class Page4 extends React.Component {
                 <Ionicons
                     name={'ios-home'}
                     size={26}
-                    style={{color:'red'}}
-               />
-                <Button title="Toggle Drawer" onPress={() => navigation.toggleDrawer()} //打开或关闭抽屉
-                />
+                    style={{
+                    color: 'red'
+                }}/>
+                <Button title="Toggle Drawer" onPress={() => navigation.toggleDrawer()}/>
+                <Button title="Toggle login" onPress={() => navigation.navigate('LoginForm')}/>
             </View>
         )
     }
