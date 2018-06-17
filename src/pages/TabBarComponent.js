@@ -5,30 +5,27 @@ import {View, Text, Button, TouchableOpacity, TouchableWithoutFeedback} from 're
 
 export default class Page4 extends React.Component {
     state = {
-        activeStack: 'bus'
+        activeStack: 0
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            activeStack: nextProps.navigationState.index
+        })
     }
     toBusStacks(e) {
-        this.setState({
-            activeStack: 'bus'
-        })
         return this
             .props
             .navigation
             .navigate('BusStacks')
     }
     toTransitStacks() {
-        this.setState({
-            activeStack: 'transit'
-        })
+        console.log(this.props.navigation.isFocused(), this.props.navigation.state, 'isFocused')
         return this
             .props
             .navigation
             .navigate('TransitStacks')
     }
     toHolidayStacks() {
-        this.setState({
-            activeStack: 'holiday'
-        })
         return this
             .props
             .navigation
@@ -107,7 +104,7 @@ export default class Page4 extends React.Component {
                             <Text
                                 style={{
                                 fontSize: 14, 
-                                color: this.state.activeStack === 'bus'?'blue': '#ccc'
+                                color: this.state.activeStack === 0?'blue': '#ccc'
                             }}>定制巴士</Text>
                         </View>
                     </TouchableWithoutFeedback>
@@ -120,7 +117,7 @@ export default class Page4 extends React.Component {
                             <Text
                                 style={{
                                 fontSize: 14, 
-                                color: this.state.activeStack === 'transit'?'blue': '#ccc'
+                                color: this.state.activeStack === 1?'blue': '#ccc'
                             }}>公交查询</Text>
                         </View>
                     </TouchableWithoutFeedback>
@@ -134,10 +131,10 @@ export default class Page4 extends React.Component {
                             <Text
                                 style={{
                                 fontSize: 14, 
-                                color: this.state.activeStack === 'holiday'?'blue': '#ccc'
+                                color: this.state.activeStack === 2?'blue': '#ccc'
                             }}>假日专线</Text>
                             <Ionicons name='md-bonfire' size={14} style={{
-                                color: this.state.activeStack === 'holiday'?'blue': '#ccc'
+                                color: this.state.activeStack === 2?'blue': '#ccc'
                             }}/>
                         </View>
                     </TouchableWithoutFeedback>

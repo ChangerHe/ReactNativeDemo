@@ -17,6 +17,7 @@ export default class Page4 extends React.Component {
                 </Text>
                 <Button title="Toggle Drawer" onPress={() => navigation.toggleDrawer()} //打开或关闭抽屉
                 />
+                <Button title="Toggle login" onPress={() => navigation.navigate('LoginForm')}/>
             </View>
         )
     }
