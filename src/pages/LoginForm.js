@@ -1,23 +1,26 @@
 import React from 'react'
-import {View, Text, Button} from 'react-native'
+import {View, Text, TouchableOpacity, Button} from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
-export default class Page4 extends React.Component {
+export default class LoginForm extends React.Component {
     render() {
-        const {navigation} = this.props;
         return (
             <View
                 style={{
                 flex: 1,
-                justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#ccc'
+                justifyContent: 'center'
             }}>
+                <Text style={{
+                    fontSize: 30
+                }}>This is a modal!</Text>
+                <Button onPress={() => this.props.navigation.goBack()} title="Dismiss"/>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Drawer')}>
+                    <View>
 
-                <Text>
-                    login
-                </Text>
-                <Button title="Toggle Drawer" onPress={() => navigation.toggleDrawer()} //打开或关闭抽屉
-                />
+                        <Ionicons name='md-close' size={30}/>
+                    </View>
+                </TouchableOpacity>
             </View>
         )
     }
