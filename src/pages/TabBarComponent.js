@@ -4,6 +4,10 @@ import {View, Text, Button, TouchableOpacity, TouchableWithoutFeedback} from 're
 // import {BoxShadow} from 'react-native-shadow'
 
 export default class Page4 extends React.Component {
+    toBusStacks(e) {
+        console.log(arguments, e.target)
+        return this.props.navigation.navigate('BusStacks')
+    }
     render() {
         const {navigation} = this.props;
         return (
@@ -29,16 +33,21 @@ export default class Page4 extends React.Component {
                 }}>
                     <TouchableOpacity
                         onPress={() => navigation.toggleDrawer()}
-                        style={{
-                        paddingLeft: 20
+                        >
+                        <View style={{
+                        paddingLeft: 20,
+                        paddingTop: 20
                     }}>
+
                         <Ionicons name='md-contact' size={26}/>
+                        </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.toggleDrawer()} style={{}}>
                         <View
                             style={{
                             flexDirection: 'row',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            paddingTop: 20
                         }}>
                             <Ionicons name='logo-chrome' size={26}/>
                             <Text>深圳</Text>
@@ -46,28 +55,50 @@ export default class Page4 extends React.Component {
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => navigation.toggleDrawer()}
-                        style={{
-                        paddingRight: 20
+                        >
+                    <View style={{
+                        paddingRight: 20,
+                        paddingTop: 20
                     }}>
+
                         <Ionicons name='ios-chatbubbles' size={26}/>
+                    </View>
                     </TouchableOpacity>
                 </View>
                 <View
                     style={{
                     flexDirection: 'row',
                     justifyContent: 'space-around',
-                    width: '100%',
-                    paddingTop: 20
+                    width: '100%'
                 }}>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('BusStacks')}>
-                        <Text>定制巴士</Text>
+                    <TouchableWithoutFeedback onPress={this.toBusStacks.bind(this)}>
+                        <View
+                            style={{
+                            paddingTop: 10
+                        }}>
+
+                            <Text>定制巴士</Text>
+                        </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={() => navigation.navigate('TransitStacks')}>
-                        <Text>公交查询</Text>
+                        <View
+                            style={{
+                            paddingTop: 10
+                        }}>
+
+                            <Text>公交查询</Text>
+                        </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback
                         onPress={() => navigation.navigate('HolidayBusStacks')}>
-                        <Text>假日专线</Text>
+                        <View
+                            style={{
+                            flexDirection: 'row',
+                            paddingTop: 10
+                        }}>
+                            <Text>假日专线</Text>
+                            <Ionicons name='md-bonfire' size={14}/>
+                        </View>
                     </TouchableWithoutFeedback>
                 </View>
 
