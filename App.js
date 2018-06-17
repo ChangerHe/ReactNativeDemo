@@ -1,4 +1,3 @@
-import {AppStackNavigator} from "./navigations/AppNavigators";
-import AppSwitchNavigation from "./navigations/index";
+import Drawer from "./src/navigations/index";
 
-export  default AppSwitchNavigation;
+export  default Drawer;
