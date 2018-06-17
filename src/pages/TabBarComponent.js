@@ -4,9 +4,35 @@ import {View, Text, Button, TouchableOpacity, TouchableWithoutFeedback} from 're
 // import {BoxShadow} from 'react-native-shadow'
 
 export default class Page4 extends React.Component {
+    state = {
+        activeStack: 'bus'
+    }
     toBusStacks(e) {
-        console.log(arguments, e.target)
-        return this.props.navigation.navigate('BusStacks')
+        this.setState({
+            activeStack: 'bus'
+        })
+        return this
+            .props
+            .navigation
+            .navigate('BusStacks')
+    }
+    toTransitStacks() {
+        this.setState({
+            activeStack: 'transit'
+        })
+        return this
+            .props
+            .navigation
+            .navigate('TransitStacks')
+    }
+    toHolidayStacks() {
+        this.setState({
+            activeStack: 'holiday'
+        })
+        return this
+            .props
+            .navigation
+            .navigate('HolidayBusStacks')
     }
     render() {
         const {navigation} = this.props;
@@ -31,15 +57,14 @@ export default class Page4 extends React.Component {
                     flexDirection: 'row',
                     justifyContent: 'space-between'
                 }}>
-                    <TouchableOpacity
-                        onPress={() => navigation.toggleDrawer()}
-                        >
-                        <View style={{
-                        paddingLeft: 20,
-                        paddingTop: 20
-                    }}>
+                    <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                        <View
+                            style={{
+                            paddingLeft: 20,
+                            paddingTop: 20
+                        }}>
 
-                        <Ionicons name='md-contact' size={26}/>
+                            <Ionicons name='md-contact' size={26}/>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.toggleDrawer()} style={{}}>
@@ -53,16 +78,15 @@ export default class Page4 extends React.Component {
                             <Text>深圳</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => navigation.toggleDrawer()}
-                        >
-                    <View style={{
-                        paddingRight: 20,
-                        paddingTop: 20
-                    }}>
+                    <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                        <View
+                            style={{
+                            paddingRight: 20,
+                            paddingTop: 20
+                        }}>
 
-                        <Ionicons name='ios-chatbubbles' size={26}/>
-                    </View>
+                            <Ionicons name='ios-chatbubbles' size={26}/>
+                        </View>
                     </TouchableOpacity>
                 </View>
                 <View
@@ -71,33 +95,50 @@ export default class Page4 extends React.Component {
                     justifyContent: 'space-around',
                     width: '100%'
                 }}>
-                    <TouchableWithoutFeedback onPress={this.toBusStacks.bind(this)}>
+                    <TouchableWithoutFeedback
+                        onPress={this
+                        .toBusStacks
+                        .bind(this)}>
                         <View
                             style={{
                             paddingTop: 10
                         }}>
 
-                            <Text>定制巴士</Text>
+                            <Text
+                                style={{
+                                fontSize: 16, 
+                                color: this.state.activeStack === 'bus'?'blue': '#ccc'
+                            }}>定制巴士</Text>
                         </View>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate('TransitStacks')}>
+                    <TouchableWithoutFeedback onPress={this.toTransitStacks.bind(this)}>
                         <View
                             style={{
                             paddingTop: 10
                         }}>
 
-                            <Text>公交查询</Text>
+                            <Text
+                                style={{
+                                fontSize: 16, 
+                                color: this.state.activeStack === 'transit'?'blue': '#ccc'
+                            }}>公交查询</Text>
                         </View>
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback
-                        onPress={() => navigation.navigate('HolidayBusStacks')}>
+                        onPress={this.toHolidayStacks.bind(this)}>
                         <View
                             style={{
                             flexDirection: 'row',
                             paddingTop: 10
                         }}>
-                            <Text>假日专线</Text>
-                            <Ionicons name='md-bonfire' size={14}/>
+                            <Text
+                                style={{
+                                fontSize: 16, 
+                                color: this.state.activeStack === 'holiday'?'blue': '#ccc'
+                            }}>假日专线</Text>
+                            <Ionicons name='md-bonfire' size={18} style={{
+                                color: this.state.activeStack === 'holiday'?'blue': '#ccc'
+                            }}/>
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
