@@ -4494,6 +4494,10 @@ react-navigation-deprecated-tab-navigator@1.3.0:
   dependencies:
     react-native-tab-view "^0.0.77"
 
+react-navigation-fluid-transitions@^0.2.0:
+  version "0.2.0"
+  resolved "http://registry.npm.taobao.org/react-navigation-fluid-transitions/download/react-navigation-fluid-transitions-0.2.0.tgz#de18462187cad09ef6bb5f8a9048962eb83222bc"
+
 react-navigation-tabs@0.3.0:
   version "0.3.0"
   resolved "http://registry.npm.taobao.org/react-navigation-tabs/download/react-navigation-tabs-0.3.0.tgz#b1fe7ef1c665dd8928fafcc8622616e220ae5efa"

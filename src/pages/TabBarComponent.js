@@ -75,7 +75,7 @@ export default class Page4 extends React.Component {
                             <Text>深圳</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                    <TouchableOpacity onPress={() => navigation.push('Messages')}>
                         <View
                             style={{
                             paddingRight: 20,

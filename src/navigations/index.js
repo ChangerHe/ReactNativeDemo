@@ -1,6 +1,7 @@
 import React from 'react';
 import {Easing, Animated} from 'react-native'
 import {createStackNavigator, createTabNavigator, createMaterialTopTabNavigator, createDrawerNavigator} from 'react-navigation';
+import {FluidNavigator} from 'react-navigation-fluid-transitions'
 import Ionicons from 'react-native-vector-icons/Ionicons'; //图标库
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'; //图标库
 
@@ -10,6 +11,8 @@ import TransitStacks from '../pages/TransitStacks/index'
 import DrawerComponent from '../pages/DrawerComponent'
 import TabBarComponent from '../pages/TabBarComponent'
 import LoginForm from '../pages/LoginForm'
+import Messages from '../pages/Messages'
+import MessageView from '../pages/MessageView'
 
 const TabsStack = createMaterialTopTabNavigator({
     BusStacks: {
@@ -42,7 +45,6 @@ const TabsStack = createMaterialTopTabNavigator({
     inactiveTintColor: 'gray'
 })
 
-
 const Drawer = createDrawerNavigator({
     TabsStack
 }, {
@@ -55,15 +57,40 @@ const Drawer = createDrawerNavigator({
     }
 })
 
-const StackNavigate = createStackNavigator({
-    LoginForm: {
-        screen: LoginForm,
+// const MessagesStack = FluidNavigator({     Drawer: {         screen: Drawer
+//   },     Messages: {         screen: Messages     } }, {     mode: 'card',
+// });
+
+const MessagesStack = createStackNavigator({
+    Drawer: {
+        screen: Drawer,
+        navigationOptions: {
+            header: null
+        }
     },
-    Drawer
+    Messages: {
+        screen: Messages,
+        navigationOptions: {
+            headerTitle: '消息'
+        }
+    },
+    MessageView: {
+        screen: MessageView,
+    }
 }, {
     initialRouteName: 'Drawer',
+    // headerMode: 'none',
+    mode: 'card',
+    headerTransitionPreset: 'uikit'
+})
+
+const StackNavigate = createStackNavigator({
+    LoginForm,
+    MessagesStack
+}, {
+    initialRouteName: 'MessagesStack',
     headerMode: 'none',
-    mode: 'modal',
+    mode: 'modal'
 })
 
 export default StackNavigate

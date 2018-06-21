@@ -17,7 +17,6 @@ export default class LoginForm extends React.Component {
                 <Button onPress={() => this.props.navigation.goBack()} title="Dismiss"/>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Drawer')}>
                     <View>
-
                         <Ionicons name='md-close' size={30}/>
                     </View>
                 </TouchableOpacity>
