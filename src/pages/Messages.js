@@ -11,6 +11,9 @@ export default class Messages extends React.Component {
             viewList: [1,1,1,1,1,1]
         }
     }
+    addRandomKey() {
+        return Math.floor(Math.random() * 10000000000)
+    }
     render() {
         const {navigation} = this.props;
         return (
@@ -23,9 +26,12 @@ export default class Messages extends React.Component {
                         this.state.viewList.length ? this.state.viewList.map((v) => {
                             return (
                             <TouchableWithoutFeedback 
+                                    key={this.addRandomKey()}
                                     onPress={() => {
                                         // Alert.alert('111')
-                                        navigation.navigate('MessageView')
+                                        navigation.navigate('MessageView', {
+                                            uri: 'https://www.baidu.com'
+                                        })
                                     }}>
                                     <View style={{
                                     height: 310,
@@ -54,12 +60,12 @@ export default class Messages extends React.Component {
                                     justifyContent: 'space-between',
                                     alignItems: 'center',
                                     height: 40,
-                                    fontSize: 16,
                                     paddingLeft: 10,
                                     marginRight: 20,
-                                    color: '#ccc',
                                 }}>
-                                    <Text>查看详情</Text>
+                                    <Text style={{
+                                    fontSize: 16,
+                                    color: '#ccc',}}>查看详情</Text>
                                     <Ionicons name='ios-arrow-forward' size={26}/>
                                 </View>
                                     </View>
