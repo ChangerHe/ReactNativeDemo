@@ -4,6 +4,7 @@ import {createStackNavigator, createTabNavigator, createMaterialTopTabNavigator,
 import {FluidNavigator} from 'react-navigation-fluid-transitions'
 import Ionicons from 'react-native-vector-icons/Ionicons'; //图标库
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'; //图标库
+import {forHorizontal} from 'react-navigation/src/views/StackView/StackViewStyleInterpolator'
 
 import BusStacks from '../pages/BusStacks/index'
 import HolidayBusStacks from '../pages/HolidayBusStacks/index'
@@ -79,9 +80,14 @@ const MessagesStack = createStackNavigator({
     }
 }, {
     initialRouteName: 'Drawer',
-    // headerMode: 'none',
     mode: 'card',
-    headerTransitionPreset: 'uikit'
+    initialRouteParams: {
+    },
+    // headerMode: 'none',
+    // headerTransitionPreset: 'uikit',
+    transitionConfig:()=>({
+        screenInterpolator: forHorizontal,
+    }),
 })
 
 const StackNavigate = createStackNavigator({
@@ -93,4 +99,4 @@ const StackNavigate = createStackNavigator({
     mode: 'modal'
 })
 
-export default StackNavigate
+export default MessagesStack
