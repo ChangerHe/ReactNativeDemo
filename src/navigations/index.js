@@ -58,11 +58,11 @@ const Drawer = createDrawerNavigator({
     }
 })
 
-// const MessagesStack = FluidNavigator({     Drawer: {         screen: Drawer
+// const MainPageStack = FluidNavigator({     Drawer: {         screen: Drawer
 //   },     Messages: {         screen: Messages     } }, {     mode: 'card',
 // });
 
-const MessagesStack = createStackNavigator({
+const MainPageStack = createStackNavigator({
     Drawer: {
         screen: Drawer,
         navigationOptions: {
@@ -85,18 +85,18 @@ const MessagesStack = createStackNavigator({
     },
     // headerMode: 'none',
     // headerTransitionPreset: 'uikit',
-    transitionConfig:()=>({
-        screenInterpolator: forHorizontal,
-    }),
+    // transitionConfig:()=>({
+    //     screenInterpolator: forHorizontal,
+    // }),
 })
 
 const StackNavigate = createStackNavigator({
     LoginForm,
-    MessagesStack
+    MainPageStack
 }, {
-    initialRouteName: 'MessagesStack',
+    initialRouteName: 'MainPageStack',
     headerMode: 'none',
     mode: 'modal'
 })
 
-export default MessagesStack
+export default StackNavigate
