@@ -7,6 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'; //图标库
 import {forHorizontal} from 'react-navigation/src/views/StackView/StackViewStyleInterpolator'
 
 import BusStacks from '../pages/BusStacks/index'
+import SearchLine from '../pages/BusStacks/SearchLine'
 import HolidayBusStacks from '../pages/HolidayBusStacks/index'
 import TransitStacks from '../pages/TransitStacks/index'
 import DrawerComponent from '../pages/DrawerComponent'
@@ -77,7 +78,13 @@ const MainPageStack = createStackNavigator({
     },
     MessageView: {
         screen: MessageView,
-    }
+    },
+    SearchLine: {
+        screen: SearchLine,
+        navigationOptions: {
+            header: null
+        }
+    },
 }, {
     initialRouteName: 'Drawer',
     mode: 'card',
