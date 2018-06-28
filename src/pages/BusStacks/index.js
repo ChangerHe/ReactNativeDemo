@@ -97,7 +97,7 @@ export default class Page4 extends React.Component {
           <Checkbox
             checked={this.state.checkBox1}
             style={{ tintColor: '#f00' }}
-            onChange={(event: any) => {
+            onChange={(event) => {
               this.setState({ checkBox1: event.target.checked });
             }}
           />
@@ -118,7 +118,7 @@ export default class Page4 extends React.Component {
         <AgreeItem
           checked={this.state.agreeItem1}
           checkboxStyle={{ tintColor: '#f00' }}
-          onChange={(event: any) => {
+          onChange={(event) => {
             this.setState({ agreeItem1: event.target.checked });
           }}
         >
@@ -135,7 +135,7 @@ export default class Page4 extends React.Component {
           <Text style={{ marginTop: 12 }}>Multiple options</Text>
           <CheckboxItem
             checked={this.state.checkboxItem1}
-            onChange={(event: any) => {
+            onChange={(event) => {
               this.setState({ checkboxItem1: event.target.checked });
             }}
           >

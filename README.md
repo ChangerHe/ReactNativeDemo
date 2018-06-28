@@ -1,4 +1,4 @@
-## 仿优点巴士app
+## react-native预研demo
 
 - 目标技术栈:
 -    框架: react-native
@@ -9,10 +9,16 @@
 
 ## TodoList
 
-[x] 页面所Router系统
-[x] 安卓的页面shadow问题
-[x] 安卓页面的跳转右向左动画问题
-[x] 集成代码至现有项目(android ios)
-[x] native端与webview的通信
-[x] animation实现
-[x] BMap引入, 与原生一致
+- [x] 安卓的页面shadow问题
+- [x] 安卓页面的跳转右向左动画问题
+- [x] animation实现
+- [x] BMap引入, 与原生一致
+- [x] native端集成, 与native端的跳转
+- [x] 项目打包发布
+
+## Doing
+
+## Done
+
+- [x] 页面Router系统
+- [x] native端与webview的通信
