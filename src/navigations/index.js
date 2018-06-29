@@ -8,6 +8,7 @@ import {forHorizontal} from 'react-navigation/src/views/StackView/StackViewStyle
 
 import BusStacks from '../pages/BusStacks/index'
 import SearchLine from '../pages/BusStacks/SearchLine'
+import AllLines from '../pages/BusStacks/AllLines'
 import HolidayBusStacks from '../pages/HolidayBusStacks/index'
 import TransitStacks from '../pages/TransitStacks/index'
 import DrawerComponent from '../pages/DrawerComponent'
@@ -81,6 +82,12 @@ const MainPageStack = createStackNavigator({
     },
     SearchLine: {
         screen: SearchLine,
+        navigationOptions: {
+            header: null
+        }
+    },
+    AllLines: {
+        screen: AllLines,
         navigationOptions: {
             header: null
         }

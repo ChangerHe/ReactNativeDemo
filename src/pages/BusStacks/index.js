@@ -44,6 +44,7 @@ export default class Page4 extends React.Component {
     })
       .start()
   }
+
   textOnLayout(e) {
     console.log(e.nativeEvent, 'e1')
     this.setState({textWidth: e.nativeEvent.layout.width});
@@ -87,7 +88,7 @@ export default class Page4 extends React.Component {
             justifyContent: 'center',
             alignItems: 'center',
             flex: 0,
-            width: 50,
+            width: 50
           }}>
             <Ionicons
               name={'ios-repeat-outline'}
@@ -112,11 +113,10 @@ export default class Page4 extends React.Component {
                 style={{
                 color: 'blue'
               }}/>
-              <TouchableHighlight 
+              <TouchableHighlight
                 onPress={() => {
-                  navigation.navigate('SearchLine')
-                }}
-              >
+                navigation.push('SearchLine')
+              }}>
                 <Text>当前位置(天安数码时代大厦)</Text>
               </TouchableHighlight>
             </View>
@@ -126,19 +126,17 @@ export default class Page4 extends React.Component {
               flex: 1,
               alignItems: 'center'
             }}>
-            <Ionicons
+              <Ionicons
                 name='ios-radio-button-on-outline'
                 size={20}
                 style={{
                 color: 'red'
               }}/>
-            <TouchableHighlight 
-                onPress={() => {
-                  
-                }}
-              >
-              <Text>天安数码时代大厦</Text>
-            </TouchableHighlight>
+              <TouchableHighlight onPress={() => {
+                navigation.push('SearchLine')
+              }}>
+                <Text>天安数码时代大厦</Text>
+              </TouchableHighlight>
             </View>
           </View>
           <View
@@ -146,7 +144,7 @@ export default class Page4 extends React.Component {
             flex: 0,
             width: 80,
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'center'
           }}>
             <View
               style={{
