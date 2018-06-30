@@ -93,7 +93,7 @@ const MainPageStack = createStackNavigator({
     MapPage: {
         screen: MapPage,
         navigationOptions: {
-            header: null
+            headerTitle: '线路详情'
         }
     },
     BuyTicket: {

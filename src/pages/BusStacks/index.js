@@ -12,6 +12,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons'; //图标库
 import FontAwesome from 'react-native-vector-icons/FontAwesome'; //图标库
 import {Button, Checkbox, List, WhiteSpace} from 'antd-mobile-rn';
+import Swiper from 'react-native-swiper';
 
 import Marquee from './components/Marquee'
 import Marquee2 from './components/Marquee2'
@@ -55,11 +56,12 @@ export default class Page4 extends React.Component {
     const {navigation} = this.props;
     return (
       <View style={{}}>
-        <View style={{
+        <View
+          style={{
           flexDirection: 'row',
           marginTop: 6,
           marginBottom: 6,
-          backgroundColor: '#fff',
+          backgroundColor: '#fff'
         }}>
           <Ionicons
             name={'ios-volume-up'}
@@ -177,7 +179,7 @@ export default class Page4 extends React.Component {
           marginTop: 10
         }}>
           <View style={{
-            paddingBottom: 230
+            // paddingBottom: 230
           }}>
             <View style={{
               backgroundColor: '#fff'
@@ -203,10 +205,7 @@ export default class Page4 extends React.Component {
                   return (
                     <TouchableWithoutFeedback
                       onPress={() => {
-                        console.log(111)
-                        navigation.push('MapPage', {
-                          param: v
-                        })
+                      navigation.push('MapPage', {param: v})
                     }}>
                       <View
                         style={{
@@ -275,10 +274,8 @@ export default class Page4 extends React.Component {
                         }}>
                           <TouchableHighlight
                             onPress={() => {
-                              navigation.push('BuyTicket', {
-                                param: v
-                              })
-                            }}
+                            navigation.push('BuyTicket', {param: v})
+                          }}
                             style={{
                             width: 60,
                             height: 30,
@@ -298,96 +295,46 @@ export default class Page4 extends React.Component {
                     </TouchableWithoutFeedback>
                   )
                 })
-              : ''
-}
-
+              : ''}
           </View>
-
+          <View style={{
+            flex: 0,
+            backgroundColor: '#fff',
+            marginTop: 10,
+          }}>
+          </View>
+          <Swiper style={{
+            height: 200
+          }} showsButtons={false} autoplay={true} showsPagination={true}>
+            <View
+              style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#9DD6EB'
+            }}>
+              <Text style={{}}>Hello Swiper</Text>
+            </View>
+            <View
+              style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#97CAE5'
+            }}>
+              <Text style={{}}>Beautiful</Text>
+            </View>
+            <View
+              style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#92BBD9'
+            }}>
+              <Text style={{}}>And simple</Text>
+            </View>
+          </Swiper>
         </ScrollView>
-        {/* <View
-          style={{
-          height: 30,
-          backgroundColor: '#909',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          overflow: 'scroll'
-        }}>
-          <Animated.Text
-            style={{
-            lineHeight: 30,
-            transform: [
-              {
-                translateX: this.state.animationTransformX
-              }
-            ]
-          }}>
-            {this.state.text}
-          </Animated.Text>
-        </View>
-        <Text onLayout={(event) => this.textOnLayout(event)}>{this.state.text}</Text>
-
-        <Button size='large'>test</Button>
-        <View style={{
-          padding: 10
-        }}>
-          <Checkbox
-            checked={this.state.checkBox1}
-            style={{
-            tintColor: '#f00'
-          }}
-            onChange={(event) => {
-            this.setState({checkBox1: event.target.checked});
-          }}/>
-          <WhiteSpace/>
-          <Checkbox>Checkbox</Checkbox>
-          <WhiteSpace/>
-          <Checkbox checked disabled/>
-          <WhiteSpace/>
-          <Checkbox disabled/>
-        </View>
-
-        <WhiteSpace/>
-        <AgreeItem>
-          Agree agreement agreement agreement agreement agreement agreement agreement
-        </AgreeItem>
-        <WhiteSpace/>
-        <AgreeItem
-          checked={this.state.agreeItem1}
-          checkboxStyle={{
-          tintColor: '#f00'
-        }}
-          onChange={(event) => {
-          this.setState({agreeItem1: event.target.checked});
-        }}>
-          Agree agreement
-        </AgreeItem>
-        <WhiteSpace/>
-        <AgreeItem disabled>Not selected. Not editable</AgreeItem>
-        <WhiteSpace/>
-        <AgreeItem checked disabled>
-          Force selected. Not editable
-        </AgreeItem>
-
-        <List style={{
-          marginTop: 12
-        }}>
-          <Text style={{
-            marginTop: 12
-          }}>Multiple options</Text>
-          <CheckboxItem
-            checked={this.state.checkboxItem1}
-            onChange={(event) => {
-            this.setState({checkboxItem1: event.target.checked});
-          }}>
-            Option 1
-          </CheckboxItem>
-          <CheckboxItem>Option 2</CheckboxItem>
-          <CheckboxItem disabled>Option 3</CheckboxItem>
-          <CheckboxItem disabled checked>
-            Option 4
-          </CheckboxItem>
-        </List> */}
       </View>
     )
   }
