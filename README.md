@@ -79,3 +79,5 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 ```
+
+3. 注释掉`src/main/java..../BaiduMapPackage.java`中最后一个`@override`这一行

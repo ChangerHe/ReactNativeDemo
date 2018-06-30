@@ -22,7 +22,7 @@ import Marquee2 from './components/Marquee2'
 const AgreeItem = Checkbox.AgreeItem;
 const CheckboxItem = Checkbox.CheckboxItem;
 
-export default class Page4 extends React.Component {
+export default class BusStacks extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -201,13 +201,15 @@ export default class Page4 extends React.Component {
               ? this
                 .state
                 .rideHistory
-                .map((v) => {
+                .map((v, i) => {
                   return (
                     <TouchableWithoutFeedback
                       onPress={() => {
                       navigation.push('MapPage', {param: v})
+                      key={i}
                     }}>
                       <View
+                        key={i}
                         style={{
                         flexDirection: 'row',
                         paddingTop: 10,
@@ -339,5 +341,3 @@ export default class Page4 extends React.Component {
     )
   }
 }
-
-const styles = {}

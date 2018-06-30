@@ -2,7 +2,7 @@ import React from 'react'
 import {View, Text, Button, TextInput, TouchableWithoutFeedback} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-export default class Page4 extends React.Component {
+export default class SearchLine extends React.Component {
   render() {
     const {navigation} = this.props;
     return (
