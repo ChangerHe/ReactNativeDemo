@@ -6,9 +6,11 @@ import {
   Easing,
   ScrollView,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableWithoutFeedback
 } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'; //图标库
+import FontAwesome from 'react-native-vector-icons/FontAwesome'; //图标库
 import {Button, Checkbox, List, WhiteSpace} from 'antd-mobile-rn';
 
 import Marquee from './components/Marquee'
@@ -27,6 +29,11 @@ export default class Page4 extends React.Component {
       text: '我是滚动轮播~~~~~我是滚动轮播~~~~~我是滚动轮播~~~~~我是滚动轮播~~~~~我是滚动轮播~~~~~我是滚动轮播~~~~~',
       textWidth: 0,
       bgViewWidth: 0,
+      rideHistory: [
+        1, 3
+      ],
+      onStation: '天安数码时代大厦',
+      offStation: '车公庙(地铁站)',
       // animation: null,
     }
   }
@@ -44,21 +51,15 @@ export default class Page4 extends React.Component {
     })
       .start()
   }
-
-  textOnLayout(e) {
-    console.log(e.nativeEvent, 'e1')
-    this.setState({textWidth: e.nativeEvent.layout.width});
-  }
-  bgViewOnLayout(e) {
-    console.log(e.nativeEvent, 'e2')
-    this.setState({bgViewWidth: e.nativeEvent.layout.width});
-  }
   render() {
     const {navigation} = this.props;
     return (
-      <View style={{}} onLayout={(event) => this.bgViewOnLayout(event)}>
+      <View style={{}}>
         <View style={{
-          flexDirection: 'row'
+          flexDirection: 'row',
+          marginTop: 6,
+          marginBottom: 6,
+          backgroundColor: '#fff',
         }}>
           <Ionicons
             name={'ios-volume-up'}
@@ -83,20 +84,26 @@ export default class Page4 extends React.Component {
           backgroundColor: '#fff',
           flexDirection: 'row'
         }}>
-          <View
-            style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            flex: 0,
-            width: 50
-          }}>
-            <Ionicons
-              name={'ios-repeat-outline'}
-              size={26}
+          <TouchableWithoutFeedback
+            onPress={() => {
+            this.setState({onStation: this.state.offStation, offStation: this.state.onStation})
+          }}
+            style={{}}>
+            <View
               style={{
-              color: 'grey'
-            }}/>
-          </View>
+              justifyContent: 'center',
+              alignItems: 'center',
+              flex: 0,
+              width: 50
+            }}>
+              <Ionicons
+                name={'ios-repeat-outline'}
+                size={26}
+                style={{
+                color: 'grey'
+              }}/>
+            </View>
+          </TouchableWithoutFeedback>
           <View style={{
             flex: 1,
             paddingLeft: 20
@@ -117,7 +124,7 @@ export default class Page4 extends React.Component {
                 onPress={() => {
                 navigation.push('SearchLine')
               }}>
-                <Text>当前位置(天安数码时代大厦)</Text>
+                <Text>{this.state.onStation}</Text>
               </TouchableHighlight>
             </View>
             <View
@@ -132,10 +139,11 @@ export default class Page4 extends React.Component {
                 style={{
                 color: 'red'
               }}/>
-              <TouchableHighlight onPress={() => {
+              <TouchableHighlight
+                onPress={() => {
                 navigation.push('SearchLine')
               }}>
-                <Text>天安数码时代大厦</Text>
+                <Text>{this.state.offStation}</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -165,6 +173,137 @@ export default class Page4 extends React.Component {
 
           </View>
         </View>
+        <ScrollView style={{
+          marginTop: 10
+        }}>
+          <View style={{
+            paddingBottom: 230
+          }}>
+            <View style={{
+              backgroundColor: '#fff'
+            }}>
+              <View
+                style={{
+                width: 70,
+                height: 20,
+                backgroundColor: 'blue',
+                borderBottomRightRadius: 10
+              }}>
+                <Text style={{
+                  color: '#fff'
+                }}>历史乘坐</Text>
+              </View>
+            </View>
+
+            {this.state.rideHistory.length
+              ? this
+                .state
+                .rideHistory
+                .map((v) => {
+                  return (
+                    <TouchableWithoutFeedback
+                      onPress={() => {
+                        console.log(111)
+                        navigation.push('MapPage', {
+                          param: v
+                        })
+                    }}>
+                      <View
+                        style={{
+                        flexDirection: 'row',
+                        paddingTop: 10,
+                        paddingBottom: 10,
+                        backgroundColor: '#fff',
+                        borderBottomColor: '#ccc',
+                        borderBottomWidth: 1,
+                        borderStyle: 'solid'
+                      }}>
+                        <View style={{
+                          flex: 1
+                        }}>
+                          <View
+                            style={{
+                            flexDirection: 'row',
+                            paddingLeft: 8,
+                            paddingTop: 8
+                          }}>
+                            <Text
+                              style={{
+                              borderRightColor: '#ccc',
+                              borderRightWidth: 1,
+                              borderStyle: 'solid'
+                            }}>F1</Text>
+                            <Text>首站发车时间17:25/{v}</Text>
+                          </View>
+                          <View
+                            style={{
+                            paddingLeft: 8,
+                            paddingTop: 8,
+                            flexDirection: 'row'
+                          }}>
+                            <Ionicons
+                              name='ios-arrow-dropup-circle'
+                              size={20}
+                              style={{
+                              paddingRight: 6,
+                              color: 'green'
+                            }}/>
+                            <Text>固戍地铁站</Text>
+                          </View>
+                          <View
+                            style={{
+                            paddingLeft: 8,
+                            paddingTop: 8,
+                            flexDirection: 'row'
+                          }}>
+                            <Ionicons
+                              name='ios-arrow-dropdown-circle'
+                              size={20}
+                              style={{
+                              paddingRight: 6,
+                              color: 'red'
+                            }}/>
+                            <Text>深大北门</Text>
+                          </View>
+                        </View>
+                        <View
+                          style={{
+                          flex: 0,
+                          width: 100,
+                          justifyContent: 'center',
+                          alignItems: 'center'
+                        }}>
+                          <TouchableHighlight
+                            onPress={() => {
+                              navigation.push('BuyTicket', {
+                                param: v
+                              })
+                            }}
+                            style={{
+                            width: 60,
+                            height: 30,
+                            backgroundColor: '#fff',
+                            borderWidth: 1,
+                            borderStyle: 'solid',
+                            borderColor: 'blue'
+                          }}>
+                            <Text
+                              style={{
+                              textAlign: 'center',
+                              lineHeight: 30
+                            }}>$4 购票</Text>
+                          </TouchableHighlight>
+                        </View>
+                      </View>
+                    </TouchableWithoutFeedback>
+                  )
+                })
+              : ''
+}
+
+          </View>
+
+        </ScrollView>
         {/* <View
           style={{
           height: 30,

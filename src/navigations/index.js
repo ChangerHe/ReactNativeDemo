@@ -1,5 +1,5 @@
 import React from 'react';
-import {Easing, Animated} from 'react-native'
+import {Easing, Animated, SafeAreaView} from 'react-native'
 import {createStackNavigator, createTabNavigator, createMaterialTopTabNavigator, createDrawerNavigator} from 'react-navigation';
 import {FluidNavigator} from 'react-navigation-fluid-transitions'
 import Ionicons from 'react-native-vector-icons/Ionicons'; //图标库
@@ -9,6 +9,8 @@ import {forHorizontal} from 'react-navigation/src/views/StackView/StackViewStyle
 import BusStacks from '../pages/BusStacks/index'
 import SearchLine from '../pages/BusStacks/SearchLine'
 import AllLines from '../pages/BusStacks/AllLines'
+import MapPage from '../pages/BusStacks/MapPage'
+import BuyTicket from '../pages/BusStacks/BuyTicket'
 import HolidayBusStacks from '../pages/HolidayBusStacks/index'
 import TransitStacks from '../pages/TransitStacks/index'
 import DrawerComponent from '../pages/DrawerComponent'
@@ -60,10 +62,6 @@ const Drawer = createDrawerNavigator({
     }
 })
 
-// const MainPageStack = FluidNavigator({     Drawer: {         screen: Drawer
-//   },     Messages: {         screen: Messages     } }, {     mode: 'card',
-// });
-
 const MainPageStack = createStackNavigator({
     Drawer: {
         screen: Drawer,
@@ -92,6 +90,18 @@ const MainPageStack = createStackNavigator({
             header: null
         }
     },
+    MapPage: {
+        screen: MapPage,
+        navigationOptions: {
+            header: null
+        }
+    },
+    BuyTicket: {
+        screen: BuyTicket,
+        navigationOptions: {
+            header: null
+        }
+    }
 }, {
     initialRouteName: 'Drawer',
     mode: 'card',

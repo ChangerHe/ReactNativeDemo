@@ -1,5 +1,6 @@
 import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons'; //图标库
+import FontAwesome from 'react-native-vector-icons/FontAwesome'; //图标库
 import {View, Text, Button, TouchableOpacity, TouchableWithoutFeedback} from 'react-native'
 // import {BoxShadow} from 'react-native-shadow'
 
@@ -64,7 +65,7 @@ export default class Page4 extends React.Component {
                             <Ionicons name='md-contact' size={26}/>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.toggleDrawer()} style={{}}>
+                    <TouchableOpacity>
                         <View
                             style={{
                             flexDirection: 'row',
@@ -98,12 +99,13 @@ export default class Page4 extends React.Component {
                         .bind(this)}>
                         <View
                             style={{
-                            paddingTop: 10
+                            paddingTop: 10,
+                            height: 40,
                         }}>
 
                             <Text
                                 style={{
-                                fontSize: 14, 
+                                fontSize: 16, 
                                 color: this.state.activeStack === 0?'blue': '#ccc'
                             }}>定制巴士</Text>
                         </View>
@@ -111,12 +113,13 @@ export default class Page4 extends React.Component {
                     <TouchableWithoutFeedback onPress={this.toTransitStacks.bind(this)}>
                         <View
                             style={{
-                            paddingTop: 10
+                            paddingTop: 10,
+                            height: 40,
                         }}>
 
                             <Text
                                 style={{
-                                fontSize: 14, 
+                                fontSize: 16, 
                                 color: this.state.activeStack === 1?'blue': '#ccc'
                             }}>公交查询</Text>
                         </View>
@@ -126,15 +129,16 @@ export default class Page4 extends React.Component {
                         <View
                             style={{
                             flexDirection: 'row',
-                            paddingTop: 10
+                            paddingTop: 10,
+                            height: 40,
                         }}>
                             <Text
                                 style={{
-                                fontSize: 14, 
+                                fontSize: 16, 
                                 color: this.state.activeStack === 2?'blue': '#ccc'
                             }}>假日专线</Text>
-                            <Ionicons name='md-bonfire' size={14} style={{
-                                color: this.state.activeStack === 2?'blue': '#ccc'
+                            <FontAwesome name='fire' size={14} style={{
+                                color: this.state.activeStack === 2?'red': '#ccc'
                             }}/>
                         </View>
                     </TouchableWithoutFeedback>
