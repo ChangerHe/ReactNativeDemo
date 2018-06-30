@@ -9,6 +9,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import "RCTBaiduMapViewManager.h"
 
 @implementation AppDelegate
 
@@ -18,7 +19,6 @@
 
   // jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"jsbundle"];
-
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"ReactNativeDemo"
                                                initialProperties:nil
@@ -30,6 +30,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [RCTBaiduMapViewManager initSDK:@"uuwHEtK0libEx0aYdpkG2qUhQ138Vb2c"];
   return YES;
 }
 

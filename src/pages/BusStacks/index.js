@@ -12,7 +12,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons'; //图标库
 import FontAwesome from 'react-native-vector-icons/FontAwesome'; //图标库
 import {Button, Checkbox, List, WhiteSpace} from 'antd-mobile-rn';
-import Swiper from 'react-native-swiper';
+import Swiper from 'react-native-swiper'
 
 import Marquee from './components/Marquee'
 import Marquee2 from './components/Marquee2'

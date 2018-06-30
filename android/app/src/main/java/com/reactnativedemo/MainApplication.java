@@ -1,4 +1,5 @@
 package com.reactnativedemo;
+import org.lovebing.reactnative.baidumap.BaiduMapPackage; //添加
 
 import android.app.Application;
 
@@ -25,7 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new VectorIconsPackage()
+          new VectorIconsPackage(),
+          new BaiduMapPackage(getApplicationContext())
       );
     }
 
