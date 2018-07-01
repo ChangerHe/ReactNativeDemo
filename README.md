@@ -81,3 +81,20 @@ import PropTypes from 'prop-types';
 ```
 
 3. 注释掉`src/main/java..../BaiduMapPackage.java`中最后一个`@override`这一行
+
+4. 引入swiper依赖后, 当开启localhost debug的时候会抛出`cannot read property 'x' of undefined`错误, 这是因为`reac-native-swiper`的依赖引入问题, 我们需要修改部分此依赖的源码
+
+```
+// react-native-swiper src/index  396行
+updateIndex = (offset, dir, cb) => {
+    if(offset === undefined || this.internals.offset === undefined){  // 增加一段
+      return;
+    }
+    const state = this.state
+    let index = state.index
+    const diff = offset[dir] - this.internals.offset[dir]
+    // 省略...
+}
+```
+
+
