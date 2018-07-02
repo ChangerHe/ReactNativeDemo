@@ -31,7 +31,7 @@ export default class BusStacks extends React.Component {
       textWidth: 0,
       bgViewWidth: 0,
       rideHistory: [
-        1, 3
+        1, 3, 4, 5
       ],
       onStation: '天安数码时代大厦',
       offStation: '车公庙(地铁站)',
@@ -177,7 +177,7 @@ export default class BusStacks extends React.Component {
         </View>
         <ScrollView style={{
           marginTop: 10,
-          backgroundColor: '#000',
+          // backgroundColor: '#000',
           marginBottom: 200
           // paddingBottom: 200
         }}>

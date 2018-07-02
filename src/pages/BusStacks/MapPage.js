@@ -35,7 +35,7 @@ export default class BaiduMapDemo extends Component {
         }, {
           longitude: 113.995516,
           latitude: 22.537642,
-          title: ""
+          title: '123'
         }
       ]
     };
@@ -46,33 +46,26 @@ export default class BaiduMapDemo extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <View>
+
+        </View>
         <MapView
-          trafficEnabled={this.state.trafficEnabled}
-          baiduHeatMapEnabled={this.state.baiduHeatMapEnabled}
-          zoom={this.state.zoom}
-          mapType={this.state.mapType}
-          center={this.state.center}
-          marker={this.state.marker}
-          markers={this.state.markers}
-          style={styles.map}
+          trafficEnabled={this.state.trafficEnabled}  // 是否开启交通图
+          baiduHeatMapEnabled={this.state.baiduHeatMapEnabled}  // 是否开启热力图
+          zoom={this.state.zoom}  // 缩放比例, 默认10
+          mapType={1}  // 0 none 1 normal 2 地理地图
+          center={this.state.center}  // 中心点, 对象{latitude: 0, longitude: 0}
+          marker={this.state.marker}  // 标记点 {latitude: 0, longitude: 0, title: ''}
+          markers={this.state.markers} // 	[marker, maker]
+          style={styles.map}  // 
           onMarkerClick={(e) => {
           console.warn(JSON.stringify(e));
         }}
-          onMapClick={(e) => {}}></MapView>
+          onMapClick={(e) => {
+            console.warn(JSON.stringify(e), 'mapclick');
+          }}></MapView>
 
         <View style={styles.row}>
-          <Button
-            title="Normal"
-            onPress={() => {
-            this.setState({mapType: MapTypes.NORMAL});
-          }}/>
-          <Button
-            style={styles.btn}
-            title="Satellite"
-            onPress={() => {
-            this.setState({mapType: MapTypes.SATELLITE});
-          }}/>
-
           <Button
             style={styles.btn}
             title="Locate"
@@ -145,7 +138,8 @@ export default class BaiduMapDemo extends Component {
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
+    marginTop: -200,
     height: 40
   },
   container: {
@@ -160,7 +154,7 @@ const styles = StyleSheet.create({
       .width,
     height: Dimensions
       .get('window')
-      .height - 200,
+      .height,
     marginBottom: 16
   }
 });
