@@ -412,6 +412,7 @@
 		74CCC44320E7B5B800DD7BAF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		74CCC44520E7B5C300DD7BAF /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		74CCC44720E7B62D00DD7BAF /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = "../node_modules/react-native-baidu-map/ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle"; sourceTree = "<group>"; };
+		74CCC49A20EA459800DD7BAF /* ReactNativeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ReactNativeDemo.entitlements; path = ReactNativeDemo/ReactNativeDemo.entitlements; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8E813D675EDD4708B70F6C0B /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -578,6 +579,7 @@
 		13B07FAE1A68108700A75B9A /* ReactNativeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				74CCC49A20EA459800DD7BAF /* ReactNativeDemo.entitlements */,
 				74CCC44720E7B62D00DD7BAF /* mapapi.bundle */,
 				742B9A8320E3C03F0099BDCB /* bundle */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -857,6 +859,11 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 74H6377RDG;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1435,7 +1442,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.udianbus.reactNative;
 				PRODUCT_NAME = ReactNativeDemo;
-				PROVISIONING_PROFILE = "edb07aab-311c-4269-ae32-fe346d88199e";
+				PROVISIONING_PROFILE = "e01cb2ea-51c8-436c-8807-f6fb3b39a5b1";
 				PROVISIONING_PROFILE_SPECIFIER = udianbusReactNative;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1462,7 +1469,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.udianbus.reactNative;
 				PRODUCT_NAME = ReactNativeDemo;
-				PROVISIONING_PROFILE = "edb07aab-311c-4269-ae32-fe346d88199e";
+				PROVISIONING_PROFILE = "e01cb2ea-51c8-436c-8807-f6fb3b39a5b1";
 				PROVISIONING_PROFILE_SPECIFIER = udianbusReactNative;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

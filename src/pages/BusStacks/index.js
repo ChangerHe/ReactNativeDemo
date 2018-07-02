@@ -176,7 +176,10 @@ export default class BusStacks extends React.Component {
           </View>
         </View>
         <ScrollView style={{
-          marginTop: 10
+          marginTop: 10,
+          backgroundColor: '#000',
+          marginBottom: 200
+          // paddingBottom: 200
         }}>
           <View style={{
             // paddingBottom: 230
