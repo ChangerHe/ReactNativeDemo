@@ -4,7 +4,7 @@ import Drawer from "./src/navigations/index";
 
 
 import { Initializer } from 'react-native-baidumap-sdk'
-Initializer.init('iOS 开发密钥').catch(e => console.error(e))
+Initializer.init('uuwHEtK0libEx0aYdpkG2qUhQ138Vb2c').catch(e => console.error(e))
 class SafeAreaWrapper extends React.Component {
     render() {
         return (
