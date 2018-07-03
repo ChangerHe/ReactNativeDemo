@@ -1,11 +1,12 @@
 package com.reactnativedemo;
-import org.lovebing.reactnative.baidumap.BaiduMapPackage; //添加
+//import org.lovebing.reactnative.baidumap.BaiduMapPackage; //添加
 
 import android.app.Application;
 
 import com.oblador.vectoricons.VectorIconsPackage;
 
 import com.facebook.react.ReactApplication;
+import cn.qiuxiang.react.baidumap.BaiduMapPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -26,8 +27,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new VectorIconsPackage(),
-          new BaiduMapPackage(getApplicationContext())
+            new BaiduMapPackage(),
+          new VectorIconsPackage()
+//          new BaiduMapPackage(getApplicationContext())
       );
     }
 

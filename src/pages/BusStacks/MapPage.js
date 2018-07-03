@@ -1,160 +1,151 @@
-import React, {Component, PropTypes} from 'react';
+import {MapView, Location, Geocode} from 'react-native-baidumap-sdk'
+import React, {Component} from 'react'
+import {View, Text} from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import {MapView, MapTypes, Geolocation} from 'react-native-baidu-map';
+import lineMsg from '../../../mock/line'
 
-import {
-  Button,
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight
-} from 'react-native';
+// state = { location: null }
 
-import Dimensions from 'Dimensions';
-
-export default class BaiduMapDemo extends Component {
-
-  constructor() {
-    super();
-
+export default class MapBaiduPage extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      mayType: MapTypes.NORMAL,
-      zoom: 15,
-      center: {
-        longitude: 113.981718,
-        latitude: 22.542449
+      location: {
+        latitude: 22.540717,
+        longitude: 114.038504
       },
-      trafficEnabled: false,
-      baiduHeatMapEnabled: false,
-      markers: [
+      points: [
         {
-          longitude: 113.981718,
-          latitude: 22.542449,
-          title: "Window of the world"
+          latitude: 22.540717,
+          longitude: 114.038504
         }, {
-          longitude: 113.995516,
-          latitude: 22.537642,
-          title: '123'
+          latitude: 22.540717,
+          longitude: 114.038504
         }
       ]
-    };
+    }
   }
+  async componentWillMount() {
+    this.setState({points: lineMsg.data.routeList})
+    await Location.init()
+    Location.addLocationListener(location => {
+      console.log(location, 'location')
+      this.setState({location})
+    })
+    Location.start()
 
-  componentDidMount() {}
-
+    // setTimeout(() => {   this     .mapView     .setStatus({       center: {
+    // latitude: 22.540717,         longitude: 114.038504       }     }, 100) },
+    // 1000);
+  }
+  onPress() {
+    console.log(111222)
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <View>
-
-        </View>
+      <View style={{
+        flex: 1
+      }}>
         <MapView
-          trafficEnabled={this.state.trafficEnabled}  // 是否开启交通图
-          baiduHeatMapEnabled={this.state.baiduHeatMapEnabled}  // 是否开启热力图
-          zoom={this.state.zoom}  // 缩放比例, 默认10
-          mapType={1}  // 0 none 1 normal 2 地理地图
-          center={this.state.center}  // 中心点, 对象{latitude: 0, longitude: 0}
-          marker={this.state.marker}  // 标记点 {latitude: 0, longitude: 0, title: ''}
-          markers={this.state.markers} // 	[marker, maker]
-          style={styles.map}  // 
-          onMarkerClick={(e) => {
-          console.warn(JSON.stringify(e));
+          zoomLevel={14}
+          overlookDisabled={true}
+          locationMode='follow'
+          minZoomLevel={18}
+          maxZoomLevel={10}
+          point={{
+          x: 1,
+          y: 2
         }}
-          onMapClick={(e) => {
-            console.warn(JSON.stringify(e), 'mapclick');
-          }}></MapView>
+          ref={ref => this.mapView = ref}
+          style={{
+          flex: 1,
+          width: '100%',
+          height: '100%'
+        }}
+          center={this.state.location}
+          onLoad={() => console.warn('onLoad')}
+          onClick={point => console.warn(point)}
+          onStatusChange={status => console.warn(status)}>
+          <MapView.Marker
+            selected={true}
+            title="This is a image marker"
+            style={{
+            width: 100,
+            height: 30
+          }}
+            coordinate={this.state.location}>
+            <MapView.Callout>
+              <View
+                style={{
+                width: 200,
+                height: 100,
+                backgroundColor: '#fff'
+              }}>
+                <View
+                  style={{
+                  flexDirection: 'row',
+                  backgroundColor: '#fff',
+                  height: 40,
+                  borderBottomColor: '#ccc',
+                  borderBottomWidth: 1,
+                  borderStyle: 'solid',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}>
+                  <Text>深南香蜜立交</Text>
+                  <Text style={{
+                    paddingLeft: 10
+                  }}>预计18:21</Text>
+                </View>
+                <View
+                  style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  alignItems: 'center',
+                  height: 50,
+                  backgroundColor: '#fff'
+                }}>
+                  <View style={{
+                    flexDirection: 'row'
+                  }}>
+                    <Ionicons
+                      name='md-eye'
+                      size={20}
+                      style={{
+                      color: 'blue'
+                    }}/>
+                    <Text style={{
+                      color: 'blue'
+                    }}>上车买票</Text>
+                  </View>
+                  <View style={{
+                    flexDirection: 'row'
+                  }}>
+                    <Ionicons
+                      name='ios-walk'
+                      size={20}
+                      style={{
+                      color: 'blue'
+                    }}/>
+                    <Text style={{
+                      color: 'blue'
+                    }}>去这里</Text>
+                  </View>
+                </View>
+              </View>
+            </MapView.Callout>
+          </MapView.Marker>
+          <MapView.Polyline points={this.state.points} width={4} color="#3391e8"/>
+          <MapView.Circle
+            center={this.state.location}
+            radius={1000}
+            strokeWidth={2}
+            strokeColor="rgba(0,0,255, 0)"
+            fillColor="rgba(0,0,255, .3)"/>
+        </MapView>
 
-        <View style={styles.row}>
-          <Button
-            style={styles.btn}
-            title="Locate"
-            onPress={() => {
-            console.warn('center', this.state.center);
-            Geolocation
-              .getCurrentPosition()
-              .then(data => {
-                console.warn(JSON.stringify(data));
-                this.setState({
-                  zoom: 15,
-                  marker: {
-                    latitude: data.latitude,
-                    longitude: data.longitude,
-                    title: 'Your location'
-                  },
-                  center: {
-                    latitude: data.latitude,
-                    longitude: data.longitude,
-                    rand: Math.random()
-                  }
-                });
-              })
-              .catch(e => {
-                console.warn(e, 'error');
-              })
-          }}/>
-        </View>
-
-        <View style={styles.row}>
-          <Button
-            title="Zoom+"
-            onPress={() => {
-            this.setState({
-              zoom: this.state.zoom + 1
-            });
-          }}/>
-          <Button
-            title="Zoom-"
-            onPress={() => {
-            if (this.state.zoom > 0) {
-              this.setState({
-                zoom: this.state.zoom - 1
-              });
-            }
-          }}/>
-        </View>
-
-        <View style={styles.row}>
-          <Button
-            title="Traffic"
-            onPress={() => {
-            this.setState({
-              trafficEnabled: !this.state.trafficEnabled
-            });
-          }}/>
-
-          <Button
-            title="Baidu HeatMap"
-            onPress={() => {
-            this.setState({
-              baiduHeatMapEnabled: !this.state.baiduHeatMapEnabled
-            });
-          }}/>
-        </View>
       </View>
-    );
+    )
   }
 }
-
-const styles = StyleSheet.create({
-  row: {
-    // flexDirection: 'row',
-    marginTop: -200,
-    height: 40
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  map: {
-    width: Dimensions
-      .get('window')
-      .width,
-    height: Dimensions
-      .get('window')
-      .height,
-    marginBottom: 16
-  }
-});
