@@ -5,8 +5,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import lineMsg from '../../../mock/line'
 
-// state = { location: null }
-
 export default class MapBaiduPage extends React.Component {
   constructor(props) {
     super(props)
@@ -39,7 +37,7 @@ export default class MapBaiduPage extends React.Component {
   }
   onCalloutPress() {
     if (Platform.OS === 'ios') {
-
+      
     } else {
       Linking.canOpenURL('baidumap://map/show').then(supported => {
         if (supported) {
@@ -55,9 +53,12 @@ export default class MapBaiduPage extends React.Component {
     }
   }
   render() {
+    const {navigation} = this.props;
     return (
       <View style={{
-        flex: 1
+        flex: 1,
+        position: 'relative',
+        width: '100%',
       }}>
         <MapView
           zoomLevel={14}
@@ -162,7 +163,31 @@ export default class MapBaiduPage extends React.Component {
             strokeColor="rgba(0,0,255, 0)"
             fillColor="rgba(0,0,255, .3)"/>
         </MapView>
-
+        <View style={{
+          position: 'absolute',
+          bottom: 20,
+          width: '100%',
+          alignItems: 'center',
+        }}>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate('BuyTicket')
+            }}
+          >
+            <View style={{
+              width: '80%',
+              height: 38,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#3391e8',
+              borderRadius: 4
+            }}>
+              <Text style={{
+                color: '#fff'
+              }}>购票</Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
       </View>
     )
   }
