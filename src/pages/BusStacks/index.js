@@ -207,9 +207,9 @@ export default class BusStacks extends React.Component {
                 .map((v, i) => {
                   return (
                     <TouchableWithoutFeedback
+                      key={i}
                       onPress={() => {
                       navigation.push('MapPage', {param: v})
-                      key={i}
                     }}>
                       <View
                         key={i}

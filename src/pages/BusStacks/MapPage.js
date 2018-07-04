@@ -1,6 +1,6 @@
 import {MapView, Location, Geocode} from 'react-native-baidumap-sdk'
 import React, {Component} from 'react'
-import {View, Text, TouchableWithoutFeedback} from 'react-native'
+import {View, Text, TouchableWithoutFeedback, Platform, Linking} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import lineMsg from '../../../mock/line'
@@ -36,7 +36,23 @@ export default class MapBaiduPage extends React.Component {
     Location.start()
   }
   onPress() {
-    console.log(111222)
+  }
+  onCalloutPress() {
+    if (Platform.OS === 'ios') {
+
+    } else {
+      Linking.canOpenURL('baidumap://map/show').then(supported => {
+        if (supported) {
+          Linking.openURL(`baidumap://map/direction?origin=${this.state.location.latitude},${this.state.location.longitude}&destination=深南香蜜立交①&zoom=16&traffic=off&mode=walking&sy=0`);
+        } else {
+          Linking.canOpenURL('amapuri://route/plan').then(supported => {
+            if (supported) {
+              Linking.openURL(`amapuri://route/plan/?dname=深南香蜜立交1(公交站)&t=2`)
+            }
+          })
+        }
+      });
+    }
   }
   render() {
     return (
@@ -72,9 +88,7 @@ export default class MapBaiduPage extends React.Component {
           }}
             coordinate={this.state.location}>
             <MapView.Callout
-              onPress={() => {
-                console.log(22333)
-              }}
+              onPress={this.onCalloutPress.bind(this)}
             >
               <View
                 style={{
@@ -93,7 +107,7 @@ export default class MapBaiduPage extends React.Component {
                   justifyContent: 'center',
                   alignItems: 'center'
                 }}>
-                  <Text>深南香蜜立交</Text>
+                  <Text>深南香蜜立交①</Text>
                   <Text style={{
                     paddingLeft: 10
                   }}>预计18:21</Text>
@@ -119,10 +133,7 @@ export default class MapBaiduPage extends React.Component {
                       color: 'blue'
                     }}>上车买票</Text>
                   </View>
-                  <TouchableWithoutFeedback
-                    onPress={() => {
-                    console.log(222)
-                  }}>
+                  <View>
                     <View
                       style={{
                       flexDirection: 'row'
@@ -138,7 +149,7 @@ export default class MapBaiduPage extends React.Component {
                       }}>去这里</Text>
                     </View>
 
-                  </TouchableWithoutFeedback>
+                  </View>
                 </View>
               </View>
             </MapView.Callout>
