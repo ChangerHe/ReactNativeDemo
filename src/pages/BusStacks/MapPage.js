@@ -1,6 +1,6 @@
 import {MapView, Location, Geocode} from 'react-native-baidumap-sdk'
 import React, {Component} from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, TouchableWithoutFeedback} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import lineMsg from '../../../mock/line'
@@ -34,10 +34,6 @@ export default class MapBaiduPage extends React.Component {
       this.setState({location})
     })
     Location.start()
-
-    // setTimeout(() => {   this     .mapView     .setStatus({       center: {
-    // latitude: 22.540717,         longitude: 114.038504       }     }, 100) },
-    // 1000);
   }
   onPress() {
     console.log(111222)
@@ -75,7 +71,11 @@ export default class MapBaiduPage extends React.Component {
             height: 30
           }}
             coordinate={this.state.location}>
-            <MapView.Callout>
+            <MapView.Callout
+              onPress={() => {
+                console.log(22333)
+              }}
+            >
               <View
                 style={{
                 width: 200,
@@ -119,19 +119,26 @@ export default class MapBaiduPage extends React.Component {
                       color: 'blue'
                     }}>上车买票</Text>
                   </View>
-                  <View style={{
-                    flexDirection: 'row'
+                  <TouchableWithoutFeedback
+                    onPress={() => {
+                    console.log(222)
                   }}>
-                    <Ionicons
-                      name='ios-walk'
-                      size={20}
+                    <View
                       style={{
-                      color: 'blue'
-                    }}/>
-                    <Text style={{
-                      color: 'blue'
-                    }}>去这里</Text>
-                  </View>
+                      flexDirection: 'row'
+                    }}>
+                      <Ionicons
+                        name='ios-walk'
+                        size={20}
+                        style={{
+                        color: 'blue'
+                      }}/>
+                      <Text style={{
+                        color: 'blue'
+                      }}>去这里</Text>
+                    </View>
+
+                  </TouchableWithoutFeedback>
                 </View>
               </View>
             </MapView.Callout>
