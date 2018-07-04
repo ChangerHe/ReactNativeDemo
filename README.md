@@ -1,13 +1,13 @@
 ## react-native预研demo
 
 目标技术栈:
--    [x]框架: react-native
--    [x]导航: react-navigation(v2)
--    []状态管理: redux
--    []异步状态: redux-saga
--    [x]字体图标: react-native-vector-icons
--    [x]Baidu地图: react-native-baidumap-sdk
--    [x]轮播图: react-native-swiper
+-    [x] 框架: react-native
+-    [x] 导航: react-navigation(v2)
+-    [] 状态管理: redux
+-    [] 异步状态: redux-saga
+-    [x] 字体图标: react-native-vector-icons
+-    [x] Baidu地图: react-native-baidumap-sdk
+-    [x] 轮播图: react-native-swiper
 
 ## TodoList
 
@@ -15,7 +15,7 @@
 - [x] 安卓页面的跳转右向左动画问题
 - [x] animation实现
 - [x] BMap与app内效果功能一致
-- [x] 项目打包发布
+- [] 项目打包发布
 
 ## Doing
 
@@ -23,7 +23,7 @@
 
 - [x] 页面Router系统
 - [x] native端与webview的通信
-- [√] BMap引入, 简单使用
+- [x] BMap引入, 简单使用
 
 ## warning
 
