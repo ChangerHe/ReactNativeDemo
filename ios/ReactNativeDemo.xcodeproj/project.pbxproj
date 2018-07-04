@@ -42,15 +42,6 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		70C5E14DB15440D8917E7C2F /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 454DDA08C3124EE09F8DEAB4 /* Feather.ttf */; };
 		742B9AAA20E3C03F0099BDCB /* bundle in Resources */ = {isa = PBXBuildFile; fileRef = 742B9A8320E3C03F0099BDCB /* bundle */; };
-		74CCC43620E7B56600DD7BAF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC43520E7B56600DD7BAF /* CoreLocation.framework */; };
-		74CCC43820E7B57200DD7BAF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC43720E7B57200DD7BAF /* QuartzCore.framework */; };
-		74CCC43A20E7B57E00DD7BAF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC43920E7B57E00DD7BAF /* OpenGLES.framework */; };
-		74CCC43C20E7B58A00DD7BAF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC43B20E7B58A00DD7BAF /* SystemConfiguration.framework */; };
-		74CCC43E20E7B59500DD7BAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC43D20E7B59500DD7BAF /* CoreGraphics.framework */; };
-		74CCC44020E7B5A000DD7BAF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC43F20E7B5A000DD7BAF /* Security.framework */; };
-		74CCC44220E7B5AC00DD7BAF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC44120E7B5AC00DD7BAF /* libsqlite3.0.tbd */; };
-		74CCC44420E7B5B800DD7BAF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC44320E7B5B800DD7BAF /* CoreTelephony.framework */; };
-		74CCC44620E7B5C300DD7BAF /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CCC44520E7B5C300DD7BAF /* libstdc++.6.0.9.tbd */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8410F3D831A24A49A143A22E /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 541564A4E00F4735BD648611 /* Foundation.ttf */; };
 		97794BA8E21846648E6D6E1F /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E813D675EDD4708B70F6C0B /* EvilIcons.ttf */; };
@@ -423,15 +414,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74CCC44620E7B5C300DD7BAF /* libstdc++.6.0.9.tbd in Frameworks */,
-				74CCC44420E7B5B800DD7BAF /* CoreTelephony.framework in Frameworks */,
-				74CCC44220E7B5AC00DD7BAF /* libsqlite3.0.tbd in Frameworks */,
-				74CCC44020E7B5A000DD7BAF /* Security.framework in Frameworks */,
-				74CCC43E20E7B59500DD7BAF /* CoreGraphics.framework in Frameworks */,
-				74CCC43C20E7B58A00DD7BAF /* SystemConfiguration.framework in Frameworks */,
-				74CCC43A20E7B57E00DD7BAF /* OpenGLES.framework in Frameworks */,
-				74CCC43820E7B57200DD7BAF /* QuartzCore.framework in Frameworks */,
-				74CCC43620E7B56600DD7BAF /* CoreLocation.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
