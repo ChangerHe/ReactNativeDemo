@@ -1,3 +1,6 @@
 [submodule "dockerTest"]
 	path = dockerTest
 	url = git@github.com:ChangerHe/dockerTest.git
+[submodule "webpack-demo"]
+	path = webpack-demo
+	url = git@github.com:ChangerHe/webpack-demo.git
