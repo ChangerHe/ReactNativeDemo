@@ -4,3 +4,4 @@
 [submodule "webpack-demo"]
 	path = webpack-demo
 	url = git@github.com:ChangerHe/webpack-demo.git
+	branch = submodule-test
